@@ -8,18 +8,18 @@
   <style>
     body {
       margin: 0;
-      padding: 180px 20px 100px;
+      padding: 60px 20px 100px;
       font-family: 'Cairo', sans-serif;
       background-image: url("../assets/background.jpg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      min-height: 100vh;
+      background-attachment: fixed;
+      height: auto;
       color: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
-      backdrop-filter: brightness(0.85);
     }
 
     .section {
@@ -46,7 +46,7 @@
     }
 
     .place-category {
-      color: #ffd700;
+      color: #a0c4d8;
       font-weight: bold;
       margin-top: 20px;
       margin-bottom: 8px;
@@ -87,14 +87,12 @@
 </head>
 <body>
 
-  <!-- صندوق التقييم في الأعلى -->
   <div class="reminder-box">
     نقدّر تقييمك للوحدة في جاذر إن  
     <br>
     We’d love your rating on Jathern
   </div>
 
-  <!-- فقرة الترحيب بدون عنوان -->
   <div class="section">
     <div class="section-title">
       مرحبًا بك في الوحدة 001، نتمنى لك إقامة مريحة وممتعة.<br>
@@ -102,7 +100,6 @@
     </div>
   </div>
 
-  <!-- فقرة الواي فاي -->
   <div class="section" style="align-self: flex-start;">
     <div class="section-title">شبكة الـ Wi-Fi</div>
     <div class="section-content">
@@ -111,7 +108,6 @@
     </div>
   </div>
 
-  <!-- فقرة الأماكن القريبة -->
   <div class="section">
     <div class="section-title">الأماكن القريبة</div>
     <div class="section-content">
@@ -120,4 +116,74 @@
       <span class="place-link"><a href="https://maps.google.com?q=شاورما+تايم" target="_blank">عرض الموقع</a></span>
 
       مطعم بيتزا هوم: بيتزا إيطالية، متوسط الأسعار 35 ريال
-      <span class="place-link">
+      <span class="place-link"><a href="https://maps.google.com?q=بيتزا+هوم" target="_blank">عرض الموقع</a></span>
+
+      مطعم فلافل المدينة: مأكولات شعبية، متوسط الأسعار 15 ريال
+      <span class="place-link"><a href="https://maps.google.com?q=فلافل+المدينة" target="_blank">عرض الموقع</a></span>
+
+      <span class="place-category">صيدليات (تبعد 4 دقائق):</span>
+      صيدلية النهدي
+      <span class="place-link"><a href="https://maps.google.com?q=صيدلية+النهدي" target="_blank">عرض الموقع</a></span>
+
+      صيدلية الدواء
+      <span class="place-link"><a href="https://maps.google.com?q=صيدلية+الدواء" target="_blank">عرض الموقع</a></span>
+
+      <span class="place-category">مستشفى أو مستوصف (يبعد 7 دقائق):</span>
+      مستشفى الهدى العام: طوارئ على مدار الساعة
+      <span class="place-link"><a href="https://maps.google.com?q=مستشفى+الهدى" target="_blank">عرض الموقع</a></span>
+
+      مستوصف الشفاء: خدمات أولية وسريعة للزوار
+      <span class="place-link"><a href="https://maps.google.com?q=مستوصف+الشفاء" target="_blank">عرض الموقع</a></span>
+
+      <span class="place-category">بقالات (تبعد 2 دقيقة):</span>
+      بقالة الراية
+      <span class="place-link"><a href="https://maps.google.com?q=بقالة+الراية" target="_blank">عرض الموقع</a></span>
+      رقم التوصيل: <strong>0551234567</strong>
+
+      <span class="place-category">محطات بنزين (تبعد 5 دقائق):</span>
+      محطة وقود ساسكو
+      <span class="place-link"><a href="https://maps.google.com?q=محطة+ساسكو" target="_blank">عرض الموقع</a></span>
+
+      <span class="place-category">مغاسل سيارات (تبعد 6 دقائق):</span>
+      مغسلة النخبة
+      <span class="place-link"><a href="https://maps.google.com?q=مغسلة+النخبة" target="_blank">عرض الموقع</a></span>
+
+      <span class="place-category">مغاسل ملابس (تبعد 3 دقائق):</span>
+      مغسلة الورد
+      <span class="place-link"><a href="https://maps.google.com?q=مغسلة+الورد" target="_blank">عرض الموقع</a></span>
+
+      <span class="place-category">حلاق (يبعد 4 دقائق):</span>
+      صالون الوسيم: حلاقة رجالية وخدمة أطفال
+      <span class="place-link"><a href="https://maps.google.com?q=صالون+الوسيم" target="_blank">عرض الموقع</a></span>
+
+      <span class="place-category">مكتبة (تبعد 5 دقائق):</span>
+      مكتبة البيان: أدوات مكتبية وتصوير مستندات
+      <span class="place-link"><a href="https://maps.google.com?q=مكتبة+البيان" target="_blank">عرض الموقع</a></span>
+
+      <span class="place-category">معالم سياحية قريبة (تبعد 10 دقائق):</span>
+      منتزه جبل السمراء: إطلالة طبيعية ومكان مثالي للنزهة
+      <span class="place-link"><a href="https://maps.google.com?q=جبل+السمراء" target="_blank">عرض الموقع</a></span>
+
+      متحف حائل التراثي: تجربة ثقافية ممتعة
+      <span class="place-link"><a href="https://maps.google.com?q=متحف+حائل" target="_blank">عرض الموقع</a></span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">تعليمات الخروج</div>
+    <div class="section-content">يرجى إطفاء الأنوار والتكييف قبل المغادرة، وشكرًا لتعاونك</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">رسالة ختامية</div>
+    <div class="section-content">نتمنى لك إقامة سعيدة، ونسعد بخدمتك دائمًا</div>
+  </div>
+
+  <div class="reminder-box">
+    نقدّر تقييمك للوحدة في جاذر إن  
+    <br>
+    We’d love your rating on Jathern
+  </div>
+
+</body>
+</html>
