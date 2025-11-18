@@ -45,6 +45,14 @@
       color: #ffffff;
     }
 
+    .place-category {
+      color: #ffd700;
+      font-weight: bold;
+      margin-top: 20px;
+      margin-bottom: 8px;
+      display: block;
+    }
+
     .reminder-box {
       background-color: #f5f5f5;
       color: #444;
@@ -57,7 +65,15 @@
       line-height: 1.4;
     }
 
+    a {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
     @media (max-width: 600px) {
+      body {
+        background-size: contain;
+      }
       .section-title {
         font-size: 1.2rem;
       }
@@ -100,41 +116,41 @@
   <div class="section">
     <div class="section-title">الأماكن القريبة</div>
     <div class="section-content">
-      <strong>مطاعم (تبعد 3-5 دقائق):</strong><br>
-      - مطعم شاورما تايم: شاورما ومشاوي، متوسط الأسعار 25 ريال<br>
-      - مطعم بيتزا هوم: بيتزا إيطالية، متوسط الأسعار 35 ريال<br>
-      - مطعم فلافل المدينة: مأكولات شعبية، متوسط الأسعار 15 ريال<br><br>
+      <span class="place-category">مطاعم (تبعد 3-5 دقائق):</span><br>
+      - <a href="https://maps.google.com?q=شاورما+تايم" target="_blank">مطعم شاورما تايم</a>: شاورما ومشاوي، متوسط الأسعار 25 ريال<br>
+      - <a href="https://maps.google.com?q=بيتزا+هوم" target="_blank">مطعم بيتزا هوم</a>: بيتزا إيطالية، متوسط الأسعار 35 ريال<br>
+      - <a href="https://maps.google.com?q=فلافل+المدينة" target="_blank">مطعم فلافل المدينة</a>: مأكولات شعبية، متوسط الأسعار 15 ريال<br><br>
 
-      <strong>صيدليات (تبعد 4 دقائق):</strong><br>
-      - صيدلية النهدي: توفر أدوية ومستلزمات صحية<br>
-      - صيدلية الدواء: خدمة سريعة وموقع قريب من الوحدة<br><br>
+      <span class="place-category">صيدليات (تبعد 4 دقائق):</span><br>
+      - <a href="https://maps.google.com?q=صيدلية+النهدي" target="_blank">صيدلية النهدي</a><br>
+      - <a href="https://maps.google.com?q=صيدلية+الدواء" target="_blank">صيدلية الدواء</a><br><br>
 
-      <strong>مستشفى أو مستوصف (يبعد 7 دقائق):</strong><br>
-      - مستشفى الهدى العام: طوارئ على مدار الساعة<br>
-      - مستوصف الشفاء: خدمات أولية وسريعة للزوار<br><br>
+      <span class="place-category">مستشفى أو مستوصف (يبعد 7 دقائق):</span><br>
+      - <a href="https://maps.google.com?q=مستشفى+الهدى" target="_blank">مستشفى الهدى العام</a>: طوارئ على مدار الساعة<br>
+      - <a href="https://maps.google.com?q=مستوصف+الشفاء" target="_blank">مستوصف الشفاء</a>: خدمات أولية وسريعة للزوار<br><br>
 
-      <strong>بقالات (تبعد 2 دقيقة):</strong><br>
-      - بقالة الراية: توفر كل الاحتياجات اليومية<br>
+      <span class="place-category">بقالات (تبعد 2 دقيقة):</span><br>
+      - <a href="https://maps.google.com?q=بقالة+الراية" target="_blank">بقالة الراية</a><br>
       - رقم التوصيل: <strong>0551234567</strong><br><br>
 
-      <strong>محطات بنزين (تبعد 5 دقائق):</strong><br>
-      - محطة وقود ساسكو: خدمة ممتازة وموقع مريح<br><br>
+      <span class="place-category">محطات بنزين (تبعد 5 دقائق):</span><br>
+      - <a href="https://maps.google.com?q=محطة+ساسكو" target="_blank">محطة وقود ساسكو</a><br><br>
 
-      <strong>مغاسل سيارات (تبعد 6 دقائق):</strong><br>
-      - مغسلة النخبة: غسيل داخلي وخارجي<br><br>
+      <span class="place-category">مغاسل سيارات (تبعد 6 دقائق):</span><br>
+      - <a href="https://maps.google.com?q=مغسلة+النخبة" target="_blank">مغسلة النخبة</a><br><br>
 
-      <strong>مغاسل ملابس (تبعد 3 دقائق):</strong><br>
-      - مغسلة الورد: غسيل وكوي سريع<br><br>
+      <span class="place-category">مغاسل ملابس (تبعد 3 دقائق):</span><br>
+      - <a href="https://maps.google.com?q=مغسلة+الورد" target="_blank">مغسلة الورد</a><br><br>
 
-      <strong>حلاق (يبعد 4 دقائق):</strong><br>
-      - صالون الوسيم: حلاقة رجالية وخدمة أطفال<br><br>
+      <span class="place-category">حلاق (يبعد 4 دقائق):</span><br>
+      - <a href="https://maps.google.com?q=صالون+الوسيم" target="_blank">صالون الوسيم</a>: حلاقة رجالية وخدمة أطفال<br><br>
 
-      <strong>مكتبة (تبعد 5 دقائق):</strong><br>
-      - مكتبة البيان: أدوات مكتبية وتصوير مستندات<br><br>
+      <span class="place-category">مكتبة (تبعد 5 دقائق):</span><br>
+      - <a href="https://maps.google.com?q=مكتبة+البيان" target="_blank">مكتبة البيان</a>: أدوات مكتبية وتصوير مستندات<br><br>
 
-      <strong>معالم سياحية قريبة (تبعد 10 دقائق):</strong><br>
-      - منتزه جبل السمراء: إطلالة طبيعية ومكان مثالي للنزهة<br>
-      - متحف حائل التراثي: تجربة ثقافية ممتعة
+      <span class="place-category">معالم سياحية قريبة (تبعد 10 دقائق):</span><br>
+      - <a href="https://maps.google.com?q=جبل+السمراء" target="_blank">منتزه جبل السمراء</a>: إطلالة طبيعية ومكان مثالي للنزهة<br>
+      - <a href="https://maps.google.com?q=متحف+حائل" target="_blank">متحف حائل التراثي</a>: تجربة ثقافية ممتعة
     </div>
   </div>
 
