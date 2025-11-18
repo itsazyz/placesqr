@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>الوحدة 001</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -14,24 +15,41 @@
       background-position: center;
       background-repeat: no-repeat;
       height: 100vh;
-      color: white;
-      text-align: center;
+      color: #fff;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      backdrop-filter: brightness(0.9);
+      text-align: center;
+      backdrop-filter: brightness(0.8);
     }
 
     .content {
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 20px;
-      border-radius: 12px;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px 20px;
+      border-radius: 16px;
       max-width: 90%;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
 
-    h1, p {
-      margin: 10px 0;
+    h1 {
+      font-size: 2rem;
+      color: #ffd700; /* ذهبي */
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin: 8px 0;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+      p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -39,8 +57,8 @@
   <div class="content">
     <h1>مرحبًا بك في الوحدة 001</h1>
     <p>نتمنى لك إقامة مريحة وممتعة</p>
-    <p>اسم الواي فاي: Guest_Wifi</p>
-    <p>كلمة المرور: welcome123</p>
+    <p><strong>اسم الواي فاي:</strong> Guest_Wifi</p>
+    <p><strong>كلمة المرور:</strong> welcome123</p>
   </div>
 </body>
 </html>
