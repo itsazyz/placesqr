@@ -29,11 +29,27 @@
       text-align: center;
     }
 
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
     .section-title {
       font-size: 1.5rem;
       font-weight: bold;
-      margin-bottom: 8px;
-      color: #6a4c93; /* بنفسجي خزامي غامق */
+      color: #6a4c93;
+    }
+
+    .toggle-btn {
+      background-color: #6a4c93;
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
     }
 
     .section-content {
@@ -49,13 +65,6 @@
       margin-top: 20px;
       margin-bottom: 8px;
       display: block;
-    }
-
-    .place-link {
-      font-size: 0.85rem;
-      color: #6a4c93;
-      display: block;
-      margin-bottom: 10px;
     }
 
     .reminder-box {
@@ -88,20 +97,8 @@
       font-weight: bold;
     }
 
-    #places-box {
-      max-height: 300px;
-      overflow: hidden;
-      transition: max-height 0.5s ease;
-    }
-
-    #show-more-btn {
-      background-color: #6a4c93;
-      color: #fff;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 10px;
+    #more-places {
+      display: none;
     }
 
     @media (max-width: 600px) {
@@ -127,29 +124,32 @@
   </div>
 
   <div class="section">
-    <div class="section-title">
+    <div class="section-title" id="welcome-title">
       زان المكان بحضورك<br>
       هذه الصفحة هي دليلك الإرشادي والمساعد وقت الحاجة.
     </div>
   </div>
 
   <div class="section">
-    <div class="section-title">شبكة الـ Wi-Fi</div>
-    <div class="section-content">
+    <div class="section-title" id="wifi-title">شبكة الـ Wi-Fi</div>
+    <div class="section-content" id="wifi-details">
       اسم الشبكة: <strong>Guest_Wifi</strong><br>
       رمز الدخول: <strong>welcome123</strong>
     </div>
   </div>
 
   <div class="section">
-    <div class="section-title">الأماكن القريبة</div>
+    <div class="section-header">
+      <div class="section-title" id="places-title">الأماكن القريبة</div>
+      <button class="toggle-btn" onclick="togglePlaces()" id="places-toggle">عرض المزيد</button>
+    </div>
     <div class="section-content" id="places-box">
       <span class="place-category">مطاعم:</span>
       مطعم شاورما تايم<br>
       مطعم بيتزا هوم<br>
       مطعم فلافل المدينة<br>
 
-      <div id="more-places" style="display: none;">
+      <div id="more-places">
         <span class="place-category">صيدليات:</span>
         صيدلية النهدي<br>
         صيدلية الدواء<br>
@@ -181,20 +181,19 @@
         متحف حائل التراثي<br>
       </div>
     </div>
-    <button id="show-more-btn" onclick="togglePlaces()">عرض المزيد</button>
   </div>
 
   <div class="section">
-    <div class="section-title">وسيلة تواصل سريعة</div>
-    <div class="section-content">
+    <div class="section-title" id="contact-title">وسيلة تواصل سريعة</div>
+    <div class="section-content" id="contact-details">
       للتواصل الفوري عبر واتساب:
       <a href="https://wa.me/966501234567" target="_blank" style="color:#6a4c93; font-weight:bold;">اضغط هنا</a>
     </div>
   </div>
 
   <div class="section">
-    <div class="section-title">ملاحظات وإرشادات مهمة</div>
-    <div class="section-content">
+    <div class="section-title" id="notes-title">ملاحظات وإرشادات مهمة</div>
+    <div class="section-content" id="notes-details">
       <span class="place-category">يرجى مراعاة التالي:</span>
       - يمنع التدخين داخل الوحدة<br>
       - يمنع اصطحاب الحيوانات الأليفة<br>
@@ -205,7 +204,7 @@
   </div>
 
   <div class="section">
-    <div class="section-title">
+    <div class="section-title" id="farewell-title">
       نتمنى لك إقامة سعيدة، ونسعد بخدمتك دائمًا
     </div>
   </div>
@@ -216,21 +215,28 @@
   </div>
 
   <script>
-    function togglePlaces() {
-      const more = document.getElementById("more-places");
-      const btn = document.getElementById("show-more-btn");
-      if (more.style.display === "none") {
-        more.style.display = "block";
-        btn.textContent = "عرض أقل";
-      } else {
-        more.style.display = "none";
-        btn.textContent = "عرض المزيد";
-      }
-    }
+    let currentLang = "ar";
 
-    function toggleLanguage() {
-      alert("ميزة تبديل اللغة قيد التطوير. يمكنك لاحقًا إضافة ترجمة لكل فقرة.");
-    }
-  </script>
-</body>
-</html>
+    const content = {
+      ar: {
+        wifiTitle: "شبكة الـ Wi-Fi",
+        wifiDetails: "اسم الشبكة: <strong>Guest_Wifi</strong><br>رمز الدخول: <strong>welcome123</strong>",
+        contactTitle: "وسيلة تواصل سريعة",
+        contactDetails: "للتواصل الفوري عبر واتساب: <a href='https://wa.me/966501234567' target='_blank' style='color:#6a4c93; font-weight:bold;'>اضغط هنا</a>",
+        placesTitle: "الأماكن القريبة",
+        notesTitle: "ملاحظات وإرشادات مهمة",
+        farewellTitle: "نتمنى لك إقامة سعيدة، ونسعد بخدمتك دائمًا",
+        welcomeTitle: "زان المكان بحضورك<br>هذه الصفحة هي دليلك الإرشادي والمساعد وقت الحاجة.",
+        toggleMore: "عرض المزيد",
+        toggleLess: "عرض أقل"
+      },
+      en: {
+        wifiTitle: "Wi-Fi Network",
+        wifiDetails: "Network Name: <strong>Guest_Wifi</strong><br>Password: <strong>welcome123</strong>",
+        contactTitle: "Quick Contact",
+        contactDetails: "For instant WhatsApp support: <a href='https://wa.me/966501234567' target='_blank' style='color:#6a4c93; font-weight:bold;'>Click here</a>",
+        placesTitle: "Nearby Places",
+        notesTitle: "Important Notes & Guidelines",
+        farewellTitle: "We wish you a pleasant stay and are always happy to serve you",
+        welcomeTitle: "Welcome!<br>This page is your guide and helper during your stay.",
+        toggle
