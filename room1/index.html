@@ -11,8 +11,7 @@
       padding: 60px 20px 100px;
       font-family: 'Cairo', sans-serif;
       background: linear-gradient(135deg, #e0f7fa, #fce4ec, #ede7f6, #fffde7);
-      height: auto;
-      color: #fff;
+      color: #333;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -55,7 +54,6 @@
     .section-content {
       font-size: 1rem;
       line-height: 1.7;
-      color: #333;
       text-align: right;
     }
 
@@ -219,24 +217,13 @@
 
     const content = {
       ar: {
+        welcomeTitle: "زان المكان بحضورك<br>هذه الصفحة هي دليلك الإرشادي والمساعد وقت الحاجة.",
         wifiTitle: "شبكة الـ Wi-Fi",
         wifiDetails: "اسم الشبكة: <strong>Guest_Wifi</strong><br>رمز الدخول: <strong>welcome123</strong>",
+        placesTitle: "الأماكن القريبة",
         contactTitle: "وسيلة تواصل سريعة",
         contactDetails: "للتواصل الفوري عبر واتساب: <a href='https://wa.me/966501234567' target='_blank' style='color:#6a4c93; font-weight:bold;'>اضغط هنا</a>",
-        placesTitle: "الأماكن القريبة",
         notesTitle: "ملاحظات وإرشادات مهمة",
+        notesDetails: "<span class='place-category'>يرجى مراعاة التالي:</span>- يمنع التدخين داخل الوحدة<br>- يمنع اصطحاب الحيوانات الأليفة<br>- يرجى عدم تحريك الأثاث أو الأجهزة<br>- في حال وجود أي ملاحظة، نرجو التواصل فورًا<br>- وقت الخروج الرسمي: الساعة 12 ظهرًا",
         farewellTitle: "نتمنى لك إقامة سعيدة، ونسعد بخدمتك دائمًا",
-        welcomeTitle: "زان المكان بحضورك<br>هذه الصفحة هي دليلك الإرشادي والمساعد وقت الحاجة.",
-        toggleMore: "عرض المزيد",
-        toggleLess: "عرض أقل"
-      },
-      en: {
-        wifiTitle: "Wi-Fi Network",
-        wifiDetails: "Network Name: <strong>Guest_Wifi</strong><br>Password: <strong>welcome123</strong>",
-        contactTitle: "Quick Contact",
-        contactDetails: "For instant WhatsApp support: <a href='https://wa.me/966501234567' target='_blank' style='color:#6a4c93; font-weight:bold;'>Click here</a>",
-        placesTitle: "Nearby Places",
-        notesTitle: "Important Notes & Guidelines",
-        farewellTitle: "We wish you a pleasant stay and are always happy to serve you",
-        welcomeTitle: "Welcome!<br>This page is your guide and helper during your stay.",
-        toggle
+        toggleMore
