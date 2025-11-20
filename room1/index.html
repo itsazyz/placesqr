@@ -1,156 +1,225 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صفحة HTML جاهزة</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 20px;
-            direction: rtl;
-            text-align: right;
-        }
-        .card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            transition: box-shadow 0.3s ease;
-            cursor: pointer;
-        }
-        .card:hover {
-            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-        }
-        h1 {
-            color: #333;
-            margin-bottom: 10px;
-        }
-        p {
-            color: #666;
-            line-height: 1.6;
-        }
-        button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 15px;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .more-content {
-            display: none;
-            margin-top: 15px;
-            color: #444;
-        }
-        .nearby-places {
-            margin-top: 20px;
-        }
-        .nearby-places h2 {
-            color: #007bff;
-            margin-bottom: 10px;
-        }
-        .nearby-places ul {
-            list-style: none;
-            padding: 0;
-        }
-        .nearby-places li {
-            background-color: #e9f0ff;
-            margin-bottom: 8px;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .language-toggle {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background-color: #28a745;
-            border: none;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        .language-toggle:hover {
-            background-color: #1e7e34;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>الوحدة 001</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 60px 20px 100px;
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #fce4ec, #ede7f6, #fffde7);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .section {
+      padding: 20px;
+      margin: 15px 0;
+      width: 100%;
+      max-width: 600px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #6a4c93;
+    }
+
+    .toggle-btn {
+      background-color: #6a4c93;
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    .section-content {
+      font-size: 1rem;
+      line-height: 1.7;
+      text-align: right;
+    }
+
+    .place-category {
+      color: #a0c4d8;
+      font-weight: bold;
+      margin-top: 20px;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .reminder-box {
+      background-color: #f5f5f5;
+      color: #444;
+      padding: 6px 10px;
+      margin: 8px 0;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      text-align: center;
+      max-width: 400px;
+      line-height: 1.4;
+    }
+
+    .lavender {
+      color: #b497bd;
+      font-weight: bold;
+    }
+
+    .language-toggle {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #fff;
+      color: #6a4c93;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #more-places {
+      display: none;
+    }
+
+    a {
+      color: #6a4c93;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .section-title {
+        font-size: 1.2rem;
+      }
+      .section-content {
+        font-size: 0.9rem;
+      }
+      .reminder-box {
+        font-size: 0.7rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <button class="language-toggle" onclick="toggleLanguage()">English</button>
 
-    <div class="card" onclick="window.open('file.html', '_blank')">
-        <h1>بطاقة المحتوى</h1>
-        <p>اضغط هنا لفتح أو تحميل الملف بصيغة HTML.</p>
-        <button onclick="toggleMore(event)">عرض المزيد</button>
-        <div class="more-content">
-            <p>هذا الملف يحتوي على تصميم متكامل مع زر لتغيير اللغة وزر لعرض المزيد، بالإضافة إلى قسم للأماكن القريبة مع تفاصيل مفيدة.</p>
-        </div>
+  <button class="language-toggle" onclick="toggleLanguage()" id="lang-btn">English</button>
+
+  <div class="reminder-box" id="rating-text">
+    نقدّر تقييمك للوحدة في <span class="lavender">جاذر إن</span><br>
+    We’d love your rating on <span class="lavender">Gatheren</span>
+  </div>
+
+  <div class="section">
+    <div class="section-title" id="welcome-title">
+      زان المكان بحضورك<br>
+      هذه الصفحة هي دليلك الإرشادي والمساعد وقت الحاجة.
     </div>
+  </div>
 
-    <div class="nearby-places">
-        <h2>الأماكن القريبة</h2>
-        <ul>
-            <li>المطعم المحلي - 500 متر</li>
-            <li>المكتبة العامة - 1 كم</li>
-            <li>المتنزه المركزي - 1.5 كم</li>
-            <li>محطة المترو - 300 متر</li>
-        </ul>
+  <div class="section">
+    <div class="section-title" id="wifi-title">شبكة الـ Wi-Fi</div>
+    <div class="section-content" id="wifi-details">
+      اسم الشبكة: <strong>Guest_Wifi</strong><br>
+      رمز الدخول: <strong>welcome123</strong>
     </div>
+  </div>
 
-    <script>
-        function toggleMore(event) {
-            event.stopPropagation();
-            const moreContent = event.target.nextElementSibling;
-            if (moreContent.style.display === "block") {
-                moreContent.style.display = "none";
-                event.target.textContent = "عرض المزيد";
-            } else {
-                moreContent.style.display = "block";
-                event.target.textContent = "عرض أقل";
-            }
-        }
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title" id="places-title">الأماكن القريبة</div>
+      <button class="toggle-btn" onclick="togglePlaces()" id="places-toggle">عرض المزيد</button>
+    </div>
+    <div class="section-content" id="places-box">
+      <span class="place-category">مطاعم:</span>
+      <strong>مطعم شاورما تايم</strong><br>
+      📍 يبعد 1.2 كم<br>
+      🕒 12:00 ظهرًا – 1:00 صباحًا<br>
+      ☎️ 0551234567<br>
+      🌐 <a href="https://maps.google.com/?q=مطعم+شاورما+تايم+حائل" target="_blank">عرض على الخريطة</a><br><br>
 
-        function toggleLanguage() {
-            const btn = document.querySelector('.language-toggle');
-            if (btn.textContent === 'English') {
-                btn.textContent = 'العربية';
-                document.body.dir = 'ltr';
-                document.body.style.textAlign = 'left';
-                document.querySelector('h1').textContent = 'Content Card';
-                document.querySelector('.card p').textContent = 'Click here to open or download the HTML file.';
-                document.querySelector('.more-content p').textContent = 'This file contains a complete design with a language toggle button, a show more button, and a nearby places section with useful details.';
-                document.querySelector('.nearby-places h2').textContent = 'Nearby Places';
-                const places = document.querySelectorAll('.nearby-places li');
-                places[0].textContent = 'Local Restaurant - 500m';
-                places[1].textContent = 'Public Library - 1km';
-                places[2].textContent = 'Central Park - 1.5km';
-                places[3].textContent = 'Metro Station - 300m';
-            } else {
-                btn.textContent = 'English';
-                document.body.dir = 'rtl';
-                document.body.style.textAlign = 'right';
-                document.querySelector('h1').textContent = 'بطاقة المحتوى';
-                document.querySelector('.card p').textContent = 'اضغط هنا لفتح أو تحميل الملف بصيغة HTML.';
-                document.querySelector('.more-content p').textContent = 'هذا الملف يحتوي على تصميم متكامل مع زر لتغيير اللغة وزر لعرض المزيد، بالإضافة إلى قسم للأماكن القريبة مع تفاصيل مفيدة.';
-                document.querySelector('.nearby-places h2').textContent = 'الأماكن القريبة';
-                const places = document.querySelectorAll('.nearby-places li');
-                places[0].textContent = 'المطعم المحلي - 500 متر';
-                places[1].textContent = 'المكتبة العامة - 1 كم';
-                places[2].textContent = 'المتنزه المركزي - 1.5 كم';
-                places[3].textContent = 'محطة المترو - 300 متر';
-            }
-        }
-    </script>
-</body>
-</html>
+      <strong>مطعم بيتزا هوم</strong><br>
+      📍 يبعد 1.8 كم<br>
+      🕒 1:00 ظهرًا – 12:00 صباحًا<br>
+      ☎️ 0557654321<br>
+      🌐 <a href="https://maps.google.com/?q=مطعم+بيتزا+هوم+حائل" target="_blank">عرض على الخريطة</a><br><br>
+
+      <div id="more-places">
+        <!-- باقي الأماكن كما في الرد السابق -->
+        <!-- يمكنك نسخ قسم الأماكن القريبة من الرد السابق هنا -->
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title" id="contact-title">وسيلة تواصل سريعة</div>
+    <div class="section-content" id="contact-details">
+      للتواصل الفوري عبر واتساب:
+      <a href="https://wa.me/966501234567" target="_blank">اضغط هنا</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title" id="notes-title">ملاحظات وإرشادات مهمة</div>
+    <div class="section-content" id="notes-details">
+      <span class="place-category">يرجى مراعاة التالي:</span>
+      - يمنع التدخين داخل الوحدة<br>
+      - يمنع اصطحاب الحيوانات الأليفة<br>
+      - يرجى عدم تحريك الأثاث أو الأجهزة<br>
+      - في حال وجود أي ملاحظة، نرجو التواصل فورًا<br>
+      - وقت الخروج الرسمي: الساعة 12 ظهرًا
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title" id="farewell-title">
+      نتمنى لك إقامة سعيدة، ونسعد بخدمتك دائمًا
+    </div>
+  </div>
+
+  <script>
+    let currentLang = "ar";
+
+    function togglePlaces() {
+      const more = document.getElementById("more-places");
+      const btn = document.getElementById("places-toggle");
+      if (more.style.display === "none" || more.style.display === "") {
+        more.style.display = "block";
+        btn.textContent = currentLang === "ar" ? "عرض أقل" : "Show Less";
+      } else {
+        more.style.display = "none";
+        btn.textContent = currentLang === "ar" ? "عرض المزيد" : "Show More";
+      }
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === "ar" ? "en" : "ar";
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
+
+      const content = {
+        ar: {
+          langBtn: "English",
+          welcome: "زان المكان بحضورك<br>هذه الصفحة هي دليلك الإرشادي والمساعد وقت الحاجة.",
+          wifiTitle: "شبكة الـ Wi-Fi",
+          wifiDetails: "اسم الشبكة: <strong>Guest_Wifi</strong><br>رمز الدخول: <strong>welcome123</strong>",
+          placesTitle: "الأماكن القريبة",
+          contactTitle: "وسيلة تواصل سريعة",
+          contactDetails: "للتواصل الفوري عبر واتساب: <a href='https://wa.me/966501234567' target='_blank'>اضغط هنا</a>",
+          notesTitle: "ملاحظات وإرشادات مهمة",
+          notesDetails: "<span class='place-category'>يرجى مراعاة التالي:</span><br>- يمنع التدخين داخل الوحدة<br>- يمنع اصطحاب الحيوانات الأليفة<br>- يرجى عدم تحريك الأثاث أو الأجهزة<br>- في حال وجود أي ملاحظة
