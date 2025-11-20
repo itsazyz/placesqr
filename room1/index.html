@@ -19,7 +19,6 @@
     }
 
     .section {
-      background-color: transparent;
       padding: 20px;
       margin: 15px 0;
       width: 100%;
@@ -114,9 +113,9 @@
 </head>
 <body>
 
-  <button class="language-toggle" onclick="toggleLanguage()">English / العربية</button>
+  <button class="language-toggle" onclick="toggleLanguage()" id="lang-btn">English</button>
 
-  <div class="reminder-box">
+  <div class="reminder-box" id="rating-text">
     نقدّر تقييمك للوحدة في <span class="lavender">جاذر إن</span><br>
     We’d love your rating on <span class="lavender">Gatheren</span>
   </div>
@@ -151,29 +150,21 @@
         <span class="place-category">صيدليات:</span>
         صيدلية النهدي<br>
         صيدلية الدواء<br>
-
         <span class="place-category">مستشفيات:</span>
         مستشفى الهدى<br>
         مستوصف الشفاء<br>
-
         <span class="place-category">بقالات:</span>
         بقالة الراية<br>
-
         <span class="place-category">محطات بنزين:</span>
         محطة وقود ساسكو<br>
-
         <span class="place-category">مغاسل سيارات:</span>
         مغسلة النخبة<br>
-
         <span class="place-category">مغاسل ملابس:</span>
         مغسلة الورد<br>
-
         <span class="place-category">حلاق:</span>
         صالون الوسيم<br>
-
         <span class="place-category">مكتبة:</span>
         مكتبة البيان<br>
-
         <span class="place-category">معالم سياحية:</span>
         منتزه جبل السمراء<br>
         متحف حائل التراثي<br>
@@ -207,17 +198,13 @@
     </div>
   </div>
 
-  <div class="reminder-box">
-    نقدّر تقييمك للوحدة في <span class="lavender">جاذر إن</span><br>
-    We’d love your rating on <span class="lavender">Gatheren</span>
-  </div>
-
   <script>
     let currentLang = "ar";
 
-    const content = {
+    const translations = {
       ar: {
-        welcomeTitle: "زان المكان بحضورك<br>هذه الصفحة هي دليلك الإرشادي والمساعد وقت الحاجة.",
+        langBtn: "English",
+        welcome: "زان المكان بحضورك<br>هذه الصفحة هي دليلك الإرشادي والمساعد وقت الحاجة.",
         wifiTitle: "شبكة الـ Wi-Fi",
         wifiDetails: "اسم الشبكة: <strong>Guest_Wifi</strong><br>رمز الدخول: <strong>welcome123</strong>",
         placesTitle: "الأماكن القريبة",
@@ -225,5 +212,11 @@
         contactDetails: "للتواصل الفوري عبر واتساب: <a href='https://wa.me/966501234567' target='_blank' style='color:#6a4c93; font-weight:bold;'>اضغط هنا</a>",
         notesTitle: "ملاحظات وإرشادات مهمة",
         notesDetails: "<span class='place-category'>يرجى مراعاة التالي:</span>- يمنع التدخين داخل الوحدة<br>- يمنع اصطحاب الحيوانات الأليفة<br>- يرجى عدم تحريك الأثاث أو الأجهزة<br>- في حال وجود أي ملاحظة، نرجو التواصل فورًا<br>- وقت الخروج الرسمي: الساعة 12 ظهرًا",
-        farewellTitle: "نتمنى لك إقامة سعيدة، ونسعد بخدمتك دائمًا",
-        toggleMore
+        farewell: "نتمنى لك إقامة سعيدة، ونسعد بخدمتك دائمًا",
+        toggleMore: "عرض المزيد",
+        toggleLess: "عرض أقل",
+        rating: "نقدّر تقييمك للوحدة في <span class='lavender'>جاذر إن</span><br>We’d love your rating on <span class='lavender'>Gatheren</span>"
+      },
+      en: {
+        langBtn: "العربية",
+        welcome: "
