@@ -4,7 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>الوحدة 001</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+
   <style>
     body {
       margin: 0;
@@ -15,7 +17,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      position: relative;
     }
 
     .section {
@@ -40,7 +41,7 @@
       color: #6a4c93;
     }
 
-    .toggle-btn {
+    .toggle-btn, .language-toggle {
       background-color: #6a4c93;
       color: #fff;
       border: none;
@@ -48,6 +49,7 @@
       border-radius: 8px;
       cursor: pointer;
       font-size: 0.85rem;
+      font-weight: bold;
     }
 
     .section-content {
@@ -81,19 +83,6 @@
       font-weight: bold;
     }
 
-    .language-toggle {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      background-color: #fff;
-      color: #6a4c93;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
     #more-places {
       display: none;
     }
@@ -104,18 +93,13 @@
     }
 
     @media (max-width: 600px) {
-      .section-title {
-        font-size: 1.2rem;
-      }
-      .section-content {
-        font-size: 0.9rem;
-      }
-      .reminder-box {
-        font-size: 0.7rem;
-      }
+      .section-title { font-size: 1.2rem; }
+      .section-content { font-size: 0.9rem; }
+      .reminder-box { font-size: 0.7rem; }
     }
   </style>
 </head>
+
 <body>
 
   <button class="language-toggle" onclick="toggleLanguage()" id="lang-btn">English</button>
@@ -145,23 +129,39 @@
       <div class="section-title" id="places-title">الأماكن القريبة</div>
       <button class="toggle-btn" onclick="togglePlaces()" id="places-toggle">عرض المزيد</button>
     </div>
+
     <div class="section-content" id="places-box">
-      <span class="place-category">مطاعم:</span>
+
+      <span class="place-category" id="cat-rest">مطاعم:</span>
+
       <strong>مطعم شاورما تايم</strong><br>
       📍 يبعد 1.2 كم<br>
       🕒 12:00 ظهرًا – 1:00 صباحًا<br>
       ☎️ 0551234567<br>
-      🌐 <a href="https://maps.google.com/?q=مطعم+شاورما+تايم+حائل" target="_blank">عرض على الخريطة</a><br><br>
+      <a href="https://maps.google.com/?q=مطعم+شاورما+تايم+حائل" target="_blank">عرض على الخريطة</a><br><br>
 
       <strong>مطعم بيتزا هوم</strong><br>
       📍 يبعد 1.8 كم<br>
       🕒 1:00 ظهرًا – 12:00 صباحًا<br>
       ☎️ 0557654321<br>
-      🌐 <a href="https://maps.google.com/?q=مطعم+بيتزا+هوم+حائل" target="_blank">عرض على الخريطة</a><br><br>
+      <a href="https://maps.google.com/?q=مطعم+بيتزا+هوم+حائل" target="_blank">عرض على الخريطة</a><br><br>
 
       <div id="more-places">
-        <!-- باقي الأماكن كما في الرد السابق -->
-        <!-- يمكنك نسخ قسم الأماكن القريبة من الرد السابق هنا -->
+
+        <span class="place-category" id="cat-market">أسواق:</span>
+
+        <strong>أسواق النخلة</strong><br>
+        📍 يبعد 2.3 كم<br>
+        🕒 8:00 صباحًا – 12:00 صباحًا<br>
+        ☎️ 0145432100<br>
+        <a href="https://maps.google.com/?q=أسواق+النخلة+حائل" target="_blank">عرض على الخريطة</a><br><br>
+
+        <strong>صيدلية الدواء</strong><br>
+        📍 تبعد 1.1 كم<br>
+        🕒 24 ساعة<br>
+        ☎️ 0145544332<br>
+        <a href="https://maps.google.com/?q=صيدلية+الدواء+حائل" target="_blank">عرض على الخريطة</a><br><br>
+
       </div>
     </div>
   </div>
@@ -177,7 +177,7 @@
   <div class="section">
     <div class="section-title" id="notes-title">ملاحظات وإرشادات مهمة</div>
     <div class="section-content" id="notes-details">
-      <span class="place-category">يرجى مراعاة التالي:</span>
+      <span class="place-category" id="note-cat">يرجى مراعاة التالي:</span>
       - يمنع التدخين داخل الوحدة<br>
       - يمنع اصطحاب الحيوانات الأليفة<br>
       - يرجى عدم تحريك الأثاث أو الأجهزة<br>
@@ -192,34 +192,76 @@
     </div>
   </div>
 
-  <script>
-    let currentLang = "ar";
+<script>
+let currentLang = "ar";
 
-    function togglePlaces() {
-      const more = document.getElementById("more-places");
-      const btn = document.getElementById("places-toggle");
-      if (more.style.display === "none" || more.style.display === "") {
-        more.style.display = "block";
-        btn.textContent = currentLang === "ar" ? "عرض أقل" : "Show Less";
-      } else {
-        more.style.display = "none";
-        btn.textContent = currentLang === "ar" ? "عرض المزيد" : "Show More";
-      }
+function togglePlaces() {
+  const more = document.getElementById("more-places");
+  const btn = document.getElementById("places-toggle");
+
+  if (more.style.display === "none" || more.style.display === "") {
+    more.style.display = "block";
+    btn.textContent = currentLang === "ar" ? "عرض أقل" : "Show Less";
+  } else {
+    more.style.display = "none";
+    btn.textContent = currentLang === "ar" ? "عرض المزيد" : "Show More";
+  }
+}
+
+function toggleLanguage() {
+  currentLang = currentLang === "ar" ? "en" : "ar";
+  document.documentElement.lang = currentLang;
+  document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
+
+  const t = {
+    ar: {
+      langBtn: "English",
+      welcome: "زان المكان بحضورك<br>هذه الصفحة هي دليلك الإرشادي والمساعد وقت الحاجة.",
+      wifiTitle: "شبكة الـ Wi-Fi",
+      wifiDetails: "اسم الشبكة: <strong>Guest_Wifi</strong><br>رمز الدخول: <strong>welcome123</strong>",
+      placesTitle: "الأماكن القريبة",
+      catRest: "مطاعم:",
+      catMarket: "أسواق:",
+      contactTitle: "وسيلة تواصل سريعة",
+      contactDetails: "للتواصل الفوري عبر واتساب: <a href='https://wa.me/966501234567' target='_blank'>اضغط هنا</a>",
+      notesTitle: "ملاحظات وإرشادات مهمة",
+      noteCat: "يرجى مراعاة التالي:",
+      farewell: "نتمنى لك إقامة سعيدة، ونسعد بخدمتك دائمًا",
+      moreBtn: document.getElementById("more-places").style.display === "none" ? "عرض المزيد" : "عرض أقل",
+    },
+
+    en: {
+      langBtn: "العربية",
+      welcome: "Welcome!<br>This page is your quick guide during your stay.",
+      wifiTitle: "Wi-Fi Network",
+      wifiDetails: "Network Name: <strong>Guest_Wifi</strong><br>Password: <strong>welcome123</strong>",
+      placesTitle: "Nearby Places",
+      catRest: "Restaurants:",
+      catMarket: "Markets:",
+      contactTitle: "Quick Contact",
+      contactDetails: "Contact via WhatsApp: <a href='https://wa.me/966501234567' target='_blank'>Click Here</a>",
+      notesTitle: "Important Notes",
+      noteCat: "Please note:",
+      farewell: "Wishing you a pleasant stay. We are here to serve you.",
+      moreBtn: document.getElementById("more-places").style.display === "none" ? "Show More" : "Show Less",
     }
+  };
 
-    function toggleLanguage() {
-      currentLang = currentLang === "ar" ? "en" : "ar";
-      document.documentElement.lang = currentLang;
-      document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
+  document.getElementById("lang-btn").textContent = t[currentLang].langBtn;
+  document.getElementById("welcome-title").innerHTML = t[currentLang].welcome;
+  document.getElementById("wifi-title").textContent = t[currentLang].wifiTitle;
+  document.getElementById("wifi-details").innerHTML = t[currentLang].wifiDetails;
+  document.getElementById("places-title").textContent = t[currentLang].placesTitle;
+  document.getElementById("places-toggle").textContent = t[currentLang].moreBtn;
+  document.getElementById("cat-rest").textContent = t[currentLang].catRest;
+  document.getElementById("cat-market").textContent = t[currentLang].catMarket;
+  document.getElementById("contact-title").textContent = t[currentLang].contactTitle;
+  document.getElementById("contact-details").innerHTML = t[currentLang].contactDetails;
+  document.getElementById("notes-title").textContent = t[currentLang].notesTitle;
+  document.getElementById("note-cat").textContent = t[currentLang].noteCat;
+  document.getElementById("farewell-title").textContent = t[currentLang].farewell;
+}
+</script>
 
-      const content = {
-        ar: {
-          langBtn: "English",
-          welcome: "زان المكان بحضورك<br>هذه الصفحة هي دليلك الإرشادي والمساعد وقت الحاجة.",
-          wifiTitle: "شبكة الـ Wi-Fi",
-          wifiDetails: "اسم الشبكة: <strong>Guest_Wifi</strong><br>رمز الدخول: <strong>welcome123</strong>",
-          placesTitle: "الأماكن القريبة",
-          contactTitle: "وسيلة تواصل سريعة",
-          contactDetails: "للتواصل الفوري عبر واتساب: <a href='https://wa.me/966501234567' target='_blank'>اضغط هنا</a>",
-          notesTitle: "ملاحظات وإرشادات مهمة",
-          notesDetails: "<span class='place-category'>يرجى مراعاة التالي:</span><br>- يمنع التدخين داخل الوحدة<br>- يمنع اصطحاب الحيوانات الأليفة<br>- يرجى عدم تحريك الأثاث أو الأجهزة<br>- في حال وجود أي ملاحظة
+</body>
+</html>
