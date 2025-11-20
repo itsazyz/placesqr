@@ -1,266 +1,260 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>الوحدة 001</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ابدأ - خدمة التنظيف</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  body {
+    font-family: 'Tajawal', sans-serif;
+    margin: 0; padding: 0;
+    background: #f8f8f8;
+  }
 
-  <style>
-    body {
-      margin: 0;
-      padding: 60px 20px 100px;
-      font-family: 'Cairo', sans-serif;
-      background: linear-gradient(135deg, #e0f7fa, #fce4ec, #ede7f6, #fffde7);
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+  /* زر تغيير اللغة */
+  #language-toggle {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 10px 15px;
+    background: #004aad;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+  }
 
-    .section {
-      padding: 20px;
-      margin: 15px 0;
-      width: 100%;
-      max-width: 600px;
-      border-radius: 12px;
-      text-align: center;
-    }
+  .container {
+    max-width: 480px;
+    margin: 90px auto 40px auto;
+    background: white;
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  }
 
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-    }
+  h2, h3 {
+    margin-top: 0;
+    color: #333;
+  }
 
-    .section-title {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #6a4c93;
-    }
+  .place-box, .category-box, .reminder-box {
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    background: #f0f4ff;
+  }
 
-    .toggle-btn, .language-toggle {
-      background-color: #6a4c93;
-      color: #fff;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      font-weight: bold;
-    }
+  .more-btn {
+    background: #004aad;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
 
-    .section-content {
-      font-size: 1rem;
-      line-height: 1.7;
-      text-align: right;
-    }
+  .details {
+    display: none;
+    margin-top: 12px;
+    background: #e8edff;
+    padding: 10px;
+    border-radius: 8px;
+  }
 
-    .place-category {
-      color: #a0c4d8;
-      font-weight: bold;
-      margin-top: 20px;
-      margin-bottom: 8px;
-      display: block;
-    }
-
-    .reminder-box {
-      background-color: #f5f5f5;
-      color: #444;
-      padding: 6px 10px;
-      margin: 8px 0;
-      border-radius: 8px;
-      font-size: 0.75rem;
-      text-align: center;
-      max-width: 400px;
-      line-height: 1.4;
-    }
-
-    .lavender {
-      color: #b497bd;
-      font-weight: bold;
-    }
-
-    #more-places {
-      display: none;
-    }
-
-    a {
-      color: #6a4c93;
-      text-decoration: underline;
-    }
-
-    @media (max-width: 600px) {
-      .section-title { font-size: 1.2rem; }
-      .section-content { font-size: 0.9rem; }
-      .reminder-box { font-size: 0.7rem; }
-    }
-  </style>
+  .info-line { margin-bottom: 6px; }
+</style>
 </head>
-
 <body>
 
-  <button class="language-toggle" onclick="toggleLanguage()" id="lang-btn">English</button>
+<button id="language-toggle">English</button>
 
-  <div class="reminder-box" id="rating-text">
-    نقدّر تقييمك للوحدة في <span class="lavender">جاذر إن</span><br>
-    We’d love your rating on <span class="lavender">Gatheren</span>
-  </div>
+<div class="container">
 
-  <div class="section">
-    <div class="section-title" id="welcome-title">
-      زان المكان بحضورك<br>
-      هذه الصفحة هي دليلك الإرشادي والمساعد وقت الحاجة.
+  <!-- عنوان -->
+  <h2 id="title">أماكن توفر خدمة التنظيف</h2>
+
+  <!-- صندوق المكان -->
+  <div class="place-box">
+    <div id="place-name">الرياض - شمال</div>
+    <button class="more-btn" onclick="toggleDetails()">عرض المزيد</button>
+
+    <div class="details" id="details-box">
+      <div class="info-line" id="address-line">العنوان: حي الياسمين</div>
+      <div class="info-line" id="hours-line">ساعات العمل: 8 صباحاً - 10 مساءً</div>
+      <div class="info-line" id="fast-contact">وسيلة تواصل سريعة: واتساب – اتصال</div>
+      <div class="info-line" id="clean-service-number">رقم خدمة التنظيف: 920000000</div>
+      <div class="info-line" id="guidelines">الإرشادات: الرجاء الحفاظ على نظافة المكان واستخدام الخدمة وفق التعليمات.</div>
     </div>
   </div>
 
-  <div class="section">
-    <div class="section-title" id="wifi-title">شبكة الـ Wi-Fi</div>
-    <div class="section-content" id="wifi-details">
-      اسم الشبكة: <strong>Guest_Wifi</strong><br>
-      رمز الدخول: <strong>welcome123</strong>
-    </div>
+  <!-- صندوق التذكير الأول -->
+  <div class="reminder-box" id="reminder-top">
+    يرجى تذكّر تقييم الوحدة بعد انتهاء الإقامة
   </div>
 
-  <div class="section">
-    <div class="section-header">
-      <div class="section-title" id="places-title">الأماكن القريبة</div>
-      <button class="toggle-btn" onclick="togglePlaces()" id="places-toggle">عرض المزيد</button>
-    </div>
+  <!-- الفئات -->
+  <h3 id="nearby-title">الأماكن القريبة</h3>
 
-    <div class="section-content" id="places-box">
+  <div id="categories-container"></div>
 
-      <span class="place-category" id="cat-rest">مطاعم:</span>
-
-      <strong>مطعم شاورما تايم</strong><br>
-      📍 يبعد 1.2 كم<br>
-      🕒 12:00 ظهرًا – 1:00 صباحًا<br>
-      ☎️ 0551234567<br>
-      <a href="https://maps.google.com/?q=مطعم+شاورما+تايم+حائل" target="_blank">عرض على الخريطة</a><br><br>
-
-      <strong>مطعم بيتزا هوم</strong><br>
-      📍 يبعد 1.8 كم<br>
-      🕒 1:00 ظهرًا – 12:00 صباحًا<br>
-      ☎️ 0557654321<br>
-      <a href="https://maps.google.com/?q=مطعم+بيتزا+هوم+حائل" target="_blank">عرض على الخريطة</a><br><br>
-
-      <div id="more-places">
-
-        <span class="place-category" id="cat-market">أسواق:</span>
-
-        <strong>أسواق النخلة</strong><br>
-        📍 يبعد 2.3 كم<br>
-        🕒 8:00 صباحًا – 12:00 صباحًا<br>
-        ☎️ 0145432100<br>
-        <a href="https://maps.google.com/?q=أسواق+النخلة+حائل" target="_blank">عرض على الخريطة</a><br><br>
-
-        <strong>صيدلية الدواء</strong><br>
-        📍 تبعد 1.1 كم<br>
-        🕒 24 ساعة<br>
-        ☎️ 0145544332<br>
-        <a href="https://maps.google.com/?q=صيدلية+الدواء+حائل" target="_blank">عرض على الخريطة</a><br><br>
-
-      </div>
-    </div>
+  <!-- التذكير الثاني في أسفل الصفحة -->
+  <div class="reminder-box" id="reminder-bottom">
+    يرجى تذكّر تقييم الوحدة بعد انتهاء الإقامة
   </div>
 
-  <div class="section">
-    <div class="section-title" id="contact-title">وسيلة تواصل سريعة</div>
-    <div class="section-content" id="contact-details">
-      للتواصل الفوري عبر واتساب:
-      <a href="https://wa.me/966501234567" target="_blank">اضغط هنا</a>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title" id="notes-title">ملاحظات وإرشادات مهمة</div>
-    <div class="section-content" id="notes-details">
-      <span class="place-category" id="note-cat">يرجى مراعاة التالي:</span>
-      - يمنع التدخين داخل الوحدة<br>
-      - يمنع اصطحاب الحيوانات الأليفة<br>
-      - يرجى عدم تحريك الأثاث أو الأجهزة<br>
-      - في حال وجود أي ملاحظة، نرجو التواصل فورًا<br>
-      - وقت الخروج الرسمي: الساعة 12 ظهرًا
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title" id="farewell-title">
-      نتمنى لك إقامة سعيدة، ونسعد بخدمتك دائمًا
-    </div>
-  </div>
+</div>
 
 <script>
 let currentLang = "ar";
 
-function togglePlaces() {
-  const more = document.getElementById("more-places");
-  const btn = document.getElementById("places-toggle");
+const content = {
+  ar: {
+    btn: "English",
+    title: "أماكن توفر خدمة التنظيف",
+    place: "الرياض - شمال",
+    address: "العنوان: حي الياسمين",
+    hours: "ساعات العمل: 8 صباحاً - 10 مساءً",
+    fastContact: "وسيلة تواصل سريعة: واتساب – اتصال",
+    cleanNumber: "رقم خدمة التنظيف: 920000000",
+    guidelines: "الإرشادات: الرجاء الحفاظ على نظافة المكان واستخدام الخدمة وفق التعليمات.",
+    more: "عرض المزيد",
+    less: "إخفاء",
+    reminder: "يرجى تذكّر تقييم الوحدة بعد انتهاء الإقامة",
+    nearbyTitle: "الأماكن القريبة",
+    categories: {
+      pharmacy: {
+        title: "صيدليات",
+        items: ["صيدلية الشفاء", "صيدلية بلس", "صيدلية الياسمين"]
+      },
+      fuel: {
+        title: "محطات وقود",
+        items: ["محطة الريان", "محطة الوادي", "محطة الشرق"]
+      },
+      laundry: {
+        title: "غسيل ملابس",
+        items: ["مغسلة سما", "مغسلة القمر", "مغسلة لين"]
+      },
+      carwash: {
+        title: "غسيل سيارات",
+        items: ["غسيل توربو", "غسيل ستار", "غسيل برو"]
+      },
+      tourism: {
+        title: "أماكن سياحية",
+        items: ["منتزه الندى", "ممشى الورود", "مطل الراحة"]
+      },
+      markets: {
+        title: "أسواق قريبة",
+        items: ["سوق الشمال", "مول اليسر", "هايبر سنتر"]
+      }
+    }
+  },
 
-  if (more.style.display === "none" || more.style.display === "") {
-    more.style.display = "block";
-    btn.textContent = currentLang === "ar" ? "عرض أقل" : "Show Less";
-  } else {
-    more.style.display = "none";
-    btn.textContent = currentLang === "ar" ? "عرض المزيد" : "Show More";
+  en: {
+    btn: "العربية",
+    title: "Available Cleaning Service Locations",
+    place: "Riyadh - North",
+    address: "Address: Al Yasmeen District",
+    hours: "Working Hours: 8 AM - 10 PM",
+    fastContact: "Quick Contact: WhatsApp – Call",
+    cleanNumber: "Cleaning Service Number: 920000000",
+    guidelines: "Guidelines: Please keep the place clean and follow service instructions.",
+    more: "Show More",
+    less: "Hide",
+    reminder: "Please remember to rate the unit after your stay",
+    nearbyTitle: "Nearby Places",
+    categories: {
+      pharmacy: {
+        title: "Pharmacies",
+        items: ["Shifa Pharmacy", "Plus Pharmacy", "Yasmeen Pharmacy"]
+      },
+      fuel: {
+        title: "Fuel Stations",
+        items: ["Rayan Station", "Wadi Station", "East Station"]
+      },
+      laundry: {
+        title: "Laundry",
+        items: ["Sama Laundry", "Moon Laundry", "Lin Laundry"]
+      },
+      carwash: {
+        title: "Car Wash",
+        items: ["Turbo Wash", "Star Wash", "Pro Wash"]
+      },
+      tourism: {
+        title: "Tourist Spots",
+        items: ["Nada Park", "Rose Walkway", "Comfort View"]
+      },
+      markets: {
+        title: "Nearby Markets",
+        items: ["North Market", "Alyusr Mall", "Hyper Center"]
+      }
+    }
+  }
+};
+
+
+function buildCategories() {
+  const container = document.getElementById("categories-container");
+  container.innerHTML = "";
+
+  const groups = content[currentLang].categories;
+
+  for (let key in groups) {
+    const box = document.createElement("div");
+    box.className = "category-box";
+
+    box.innerHTML = `
+      <h3>${groups[key].title}</h3>
+      <ul>${groups[key].items.map(i => `<li>${i}</li>`).join("")}</ul>
+    `;
+
+    container.appendChild(box);
   }
 }
 
-function toggleLanguage() {
+function toggleDetails() {
+  const box = document.getElementById("details-box");
+  const btn = document.querySelector(".more-btn");
+
+  if (box.style.display === "block") {
+    box.style.display = "none";
+    btn.textContent = content[currentLang].more;
+  } else {
+    box.style.display = "block";
+    btn.textContent = content[currentLang].less;
+  }
+}
+
+document.getElementById("language-toggle").onclick = function() {
   currentLang = currentLang === "ar" ? "en" : "ar";
+  const data = content[currentLang];
+
   document.documentElement.lang = currentLang;
   document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
 
-  const t = {
-    ar: {
-      langBtn: "English",
-      welcome: "زان المكان بحضورك<br>هذه الصفحة هي دليلك الإرشادي والمساعد وقت الحاجة.",
-      wifiTitle: "شبكة الـ Wi-Fi",
-      wifiDetails: "اسم الشبكة: <strong>Guest_Wifi</strong><br>رمز الدخول: <strong>welcome123</strong>",
-      placesTitle: "الأماكن القريبة",
-      catRest: "مطاعم:",
-      catMarket: "أسواق:",
-      contactTitle: "وسيلة تواصل سريعة",
-      contactDetails: "للتواصل الفوري عبر واتساب: <a href='https://wa.me/966501234567' target='_blank'>اضغط هنا</a>",
-      notesTitle: "ملاحظات وإرشادات مهمة",
-      noteCat: "يرجى مراعاة التالي:",
-      farewell: "نتمنى لك إقامة سعيدة، ونسعد بخدمتك دائمًا",
-      moreBtn: document.getElementById("more-places").style.display === "none" ? "عرض المزيد" : "عرض أقل",
-    },
+  this.textContent = data.btn;
+  document.getElementById("title").textContent = data.title;
+  document.getElementById("place-name").textContent = data.place;
+  document.getElementById("address-line").textContent = data.address;
+  document.getElementById("hours-line").textContent = data.hours;
+  document.getElementById("fast-contact").textContent = data.fastContact;
+  document.getElementById("clean-service-number").textContent = data.cleanNumber;
+  document.getElementById("guidelines").textContent = data.guidelines;
 
-    en: {
-      langBtn: "العربية",
-      welcome: "Welcome!<br>This page is your quick guide during your stay.",
-      wifiTitle: "Wi-Fi Network",
-      wifiDetails: "Network Name: <strong>Guest_Wifi</strong><br>Password: <strong>welcome123</strong>",
-      placesTitle: "Nearby Places",
-      catRest: "Restaurants:",
-      catMarket: "Markets:",
-      contactTitle: "Quick Contact",
-      contactDetails: "Contact via WhatsApp: <a href='https://wa.me/966501234567' target='_blank'>Click Here</a>",
-      notesTitle: "Important Notes",
-      noteCat: "Please note:",
-      farewell: "Wishing you a pleasant stay. We are here to serve you.",
-      moreBtn: document.getElementById("more-places").style.display === "none" ? "Show More" : "Show Less",
-    }
-  };
+  document.getElementById("reminder-top").textContent = data.reminder;
+  document.getElementById("reminder-bottom").textContent = data.reminder;
 
-  document.getElementById("lang-btn").textContent = t[currentLang].langBtn;
-  document.getElementById("welcome-title").innerHTML = t[currentLang].welcome;
-  document.getElementById("wifi-title").textContent = t[currentLang].wifiTitle;
-  document.getElementById("wifi-details").innerHTML = t[currentLang].wifiDetails;
-  document.getElementById("places-title").textContent = t[currentLang].placesTitle;
-  document.getElementById("places-toggle").textContent = t[currentLang].moreBtn;
-  document.getElementById("cat-rest").textContent = t[currentLang].catRest;
-  document.getElementById("cat-market").textContent = t[currentLang].catMarket;
-  document.getElementById("contact-title").textContent = t[currentLang].contactTitle;
-  document.getElementById("contact-details").innerHTML = t[currentLang].contactDetails;
-  document.getElementById("notes-title").textContent = t[currentLang].notesTitle;
-  document.getElementById("note-cat").textContent = t[currentLang].noteCat;
-  document.getElementById("farewell-title").textContent = t[currentLang].farewell;
-}
+  buildCategories();
+
+  const box = document.getElementById("details-box");
+  const btn = document.querySelector(".more-btn");
+  btn.textContent = box.style.display === "block" ? data.less : data.more;
+};
+
+buildCategories();
 </script>
 
 </body>
