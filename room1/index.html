@@ -18,7 +18,6 @@ body {
   position: relative;
 }
 
-/* زر تغيير اللغة */
 .language-toggle {
   position: absolute;
   top: 20px;
@@ -32,7 +31,6 @@ body {
   font-weight: bold;
 }
 
-/* الصناديق */
 .section {
   width: 100%;
   max-width: 600px;
@@ -40,7 +38,7 @@ body {
   margin: 15px 0;
   border-radius: 12px;
   text-align: center;
-  background-color: transparent; /* شفاف بالكامل */
+  background-color: transparent;
 }
 
 .section-title {
@@ -52,7 +50,7 @@ body {
 .section-content {
   font-size: 1rem;
   line-height: 1.7;
-  text-align: center; /* تمركز النص */
+  text-align: center;
 }
 
 .section-header {
@@ -80,6 +78,15 @@ body {
   display: block;
 }
 
+.place-entry {
+  margin-bottom: 15px;
+}
+
+.place-entry a {
+  color: #6a4c93;
+  text-decoration: underline;
+}
+
 .reminder-box {
   padding: 6px 10px;
   margin: 8px 0;
@@ -88,7 +95,7 @@ body {
   text-align: center;
   max-width: 400px;
   line-height: 1.4;
-  background-color: transparent; /* شفاف بالكامل */
+  background-color: transparent;
   color: #444;
 }
 
@@ -97,14 +104,7 @@ body {
   font-weight: bold;
 }
 
-#more-places {
-  display: none;
-}
-
-a {
-  color: #6a4c93;
-  text-decoration: underline;
-}
+#more-places { display: none; }
 
 @media (max-width: 600px) {
   .section-title { font-size: 1.2rem; }
@@ -148,33 +148,66 @@ a {
   </div>
   <div class="section-content" id="places-box">
     <span class="place-category" id="category-restaurants">مطاعم:</span>
-    <strong class="place-name">مطعم شاورما تايم</strong><br>
-    📍 يبعد 1.2 كم<br>🕒 12:00 – 1:00 صباحًا<br>☎️ 0551234567<br>
-    🌐 <a href="https://maps.google.com/?q=مطعم+شاورما+تايم+حائل" target="_blank">عرض على الخريطة</a><br><br>
 
-    <strong class="place-name">مطعم بيتزا هوم</strong><br>
-    📍 يبعد 1.8 كم<br>🕒 1:00 – 12:00 صباحًا<br>☎️ 0557654321<br>
-    🌐 <a href="https://maps.google.com/?q=مطعم+بيتزا+هوم+حائل" target="_blank">عرض على الخريطة</a><br>
+    <div class="place-entry" data-ar-name="مطعم شاورما تايم" data-en-name="Shawarma Time">
+      <strong class="place-name">مطعم شاورما تايم</strong><br>
+      📍 <span class="distance">يبتعد 1.2 كم</span><br>
+      🕒 <span class="hours">12:00 – 1:00 صباحًا</span><br>
+      ☎️ 0551234567<br>
+      🌐 <a href="https://maps.google.com/?q=مطعم+شاورما+تايم+حائل" class="map-link" target="_blank">عرض على الخريطة</a>
+    </div>
+
+    <div class="place-entry" data-ar-name="مطعم بيتزا هوم" data-en-name="Pizza Home">
+      <strong class="place-name">مطعم بيتزا هوم</strong><br>
+      📍 <span class="distance">يبتعد 1.8 كم</span><br>
+      🕒 <span class="hours">1:00 – 12:00 صباحًا</span><br>
+      ☎️ 0557654321<br>
+      🌐 <a href="https://maps.google.com/?q=مطعم+بيتزا+هوم+حائل" class="map-link" target="_blank">عرض على الخريطة</a>
+    </div>
 
     <div id="more-places">
       <span class="place-category" id="category-pharmacies">صيدليات:</span>
-      <strong class="place-name">صيدلية النور</strong><br>
-      📍 يبعد 0.5 كم<br>☎️ 050111222<br><br>
+      <div class="place-entry" data-ar-name="صيدلية النور" data-en-name="Al Noor Pharmacy">
+        <strong class="place-name">صيدلية النور</strong><br>
+        📍 <span class="distance">يبتعد 0.5 كم</span><br>
+        ☎️ 050111222<br>
+        🌐 <a href="https://maps.google.com/?q=صيدلية+النور" class="map-link" target="_blank">عرض على الخريطة</a>
+      </div>
 
       <span class="place-category" id="category-gas">محطات وقود:</span>
-      <strong class="place-name">محطة التميز</strong><br>📍 يبعد 1 كم<br><br>
+      <div class="place-entry" data-ar-name="محطة التميز" data-en-name="Al Tamayoz Gas Station">
+        <strong class="place-name">محطة التميز</strong><br>
+        📍 <span class="distance">يبتعد 1 كم</span><br>
+        🌐 <a href="https://maps.google.com/?q=محطة+التميز" class="map-link" target="_blank">عرض على الخريطة</a>
+      </div>
 
       <span class="place-category" id="category-laundry">غسيل ملابس:</span>
-      <strong class="place-name">مغسلة الراحة</strong><br>📍 يبعد 2 كم<br><br>
+      <div class="place-entry" data-ar-name="مغسلة الراحة" data-en-name="Al Raha Laundry">
+        <strong class="place-name">مغسلة الراحة</strong><br>
+        📍 <span class="distance">يبتعد 2 كم</span><br>
+        🌐 <a href="https://maps.google.com/?q=مغسلة+الراحة" class="map-link" target="_blank">عرض على الخريطة</a>
+      </div>
 
       <span class="place-category" id="category-carwash">غسيل سيارات:</span>
-      <strong class="place-name">غسيل السيارات السريع</strong><br>📍 يبعد 2.5 كم<br><br>
+      <div class="place-entry" data-ar-name="غسيل السيارات السريع" data-en-name="Quick Car Wash">
+        <strong class="place-name">غسيل السيارات السريع</strong><br>
+        📍 <span class="distance">يبتعد 2.5 كم</span><br>
+        🌐 <a href="https://maps.google.com/?q=غسيل+السيارات+السريع" class="map-link" target="_blank">عرض على الخريطة</a>
+      </div>
 
       <span class="place-category" id="category-tourist">أماكن سياحية:</span>
-      <strong class="place-name">حديقة الملك</strong><br>📍 يبعد 3 كم<br><br>
+      <div class="place-entry" data-ar-name="حديقة الملك" data-en-name="King Park">
+        <strong class="place-name">حديقة الملك</strong><br>
+        📍 <span class="distance">يبتعد 3 كم</span><br>
+        🌐 <a href="https://maps.google.com/?q=حديقة+الملك" class="map-link" target="_blank">عرض على الخريطة</a>
+      </div>
 
       <span class="place-category" id="category-markets">أسواق قريبة:</span>
-      <strong class="place-name">سوق الياسمين</strong><br>📍 يبعد 1.5 كم<br><br>
+      <div class="place-entry" data-ar-name="سوق الياسمين" data-en-name="Al Yasmeen Market">
+        <strong class="place-name">سوق الياسمين</strong><br>
+        📍 <span class="distance">يبتعد 1.5 كم</span><br>
+        🌐 <a href="https://maps.google.com/?q=سوق+الياسمين" class="map-link" target="_blank">عرض على الخريطة</a>
+      </div>
     </div>
   </div>
 </div>
@@ -188,7 +221,7 @@ a {
   </div>
 </div>
 
-<!-- الملاحظات والإرشادات -->
+<!-- الملاحظات -->
 <div class="section">
   <div class="section-title" id="notes-title">ملاحظات وإرشادات مهمة</div>
   <div class="section-content" id="notes-details">
@@ -200,7 +233,7 @@ a {
   </div>
 </div>
 
-<!-- رسالة وداع -->
+<!-- وداع -->
 <div class="section">
   <div class="section-title" id="farewell-title">نتمنى لك إقامة سعيدة، ونسعد بخدمتك دائمًا</div>
 </div>
@@ -227,11 +260,14 @@ const content = {
     notesTitle: "ملاحظات وإرشادات مهمة",
     notesDetails: "- يمنع التدخين داخل الوحدة<br>- يمنع اصطحاب الحيوانات الأليفة<br>- يرجى عدم تحريك الأثاث أو الأجهزة<br>- في حال وجود أي ملاحظة، نرجو التواصل فورًا<br>- وقت الخروج الرسمي: الساعة 12 ظهرًا",
     more: "عرض المزيد",
-    less: "عرض أقل"
+    less: "عرض أقل",
+    distance: "يبتعد",
+    hours: "أوقات العمل",
+    viewMap: "عرض على الخريطة"
   },
   en: {
     langBtn: "العربية",
-    welcome: "Welcome!<br>This page is your guide and helper when needed.",
+    welcome: "Welcome!<br>This page is your guide and helper during your stay.",
     wifiTitle: "Wi-Fi Network",
     wifiDetails: "Network Name: <strong>Guest_Wifi</strong><br>Password: <strong>welcome123</strong>",
     placesTitle: "Nearby Places",
@@ -247,7 +283,10 @@ const content = {
     notesTitle: "Important Notes & Guidelines",
     notesDetails: "- No smoking inside the unit<br>- No pets allowed<br>- Do not move furniture or appliances<br>- For any issues, contact immediately<br>- Official checkout time: 12 PM",
     more: "Show More",
-    less: "Show Less"
+    less: "Show Less",
+    distance: "Distance",
+    hours: "Working Hours",
+    viewMap: "View on Map"
   }
 };
 
@@ -286,7 +325,20 @@ document.getElementById("lang-btn").onclick = function() {
   document.getElementById("notes-title").textContent = data.notesTitle;
   document.getElementById("notes-details").innerHTML = data.notesDetails;
 
-  // تحديث زر المزيد
+  // تحديث أسماء الأماكن ومسافة العمل وروابط الخرائط
+  document.querySelectorAll('.place-entry').forEach(function(entry){
+    const name = currentLang === 'ar' ? entry.dataset.arName : entry.dataset.enName;
+    entry.querySelector('.place-name').textContent = name;
+    // المسافة وأوقات العمل
+    const dist = entry.querySelector('.distance');
+    const hrs = entry.querySelector('.hours');
+    if(dist) dist.textContent = currentLang==='ar' ? dist.textContent.replace('Distance','يبتعد') : dist.textContent.replace('يبتعد','Distance');
+    if(hrs) hrs.textContent = currentLang==='ar' ? hrs.textContent.replace('Working Hours','أوقات العمل') : hrs.textContent.replace('أوقات العمل','Working Hours');
+    // رابط الخريطة
+    entry.querySelector('.map-link').textContent = currentLang==='ar' ? 'عرض على الخريطة' : 'View on Map';
+  });
+
+  // زر المزيد
   const moreBtn = document.getElementById("places-toggle");
   const moreSection = document.getElementById("more-places");
   moreBtn.textContent = moreSection.style.display === "block" ? data.less : data.more;
