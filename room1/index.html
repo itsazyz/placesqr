@@ -4,215 +4,141 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>الوحدة 001</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
-      margin: 0;
-      padding: 60px 20px 100px;
       font-family: 'Cairo', sans-serif;
       background: linear-gradient(135deg, #e0f7fa, #fce4ec, #ede7f6, #fffde7);
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
+      padding: 60px 20px;
+      margin: 0;
+      direction: rtl;
     }
-
     .section {
-      padding: 20px;
-      margin: 15px 0;
-      width: 100%;
       max-width: 600px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
       border-radius: 12px;
-      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-
     .section-title {
       font-size: 1.5rem;
       font-weight: bold;
       color: #6a4c93;
+      margin-bottom: 10px;
     }
-
-    .toggle-btn {
+    .section-content {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #333;
+    }
+    .toggle-btn, .language-toggle {
       background-color: #6a4c93;
       color: #fff;
       border: none;
-      padding: 6px 12px;
+      padding: 8px 16px;
       border-radius: 8px;
       cursor: pointer;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
+      margin-top: 10px;
     }
-
-    .section-content {
-      font-size: 1rem;
-      line-height: 1.7;
-      text-align: right;
-    }
-
     .place-category {
       color: #a0c4d8;
       font-weight: bold;
       margin-top: 20px;
-      margin-bottom: 8px;
       display: block;
     }
-
-    .reminder-box {
-      background-color: #f5f5f5;
-      color: #444;
-      padding: 6px 10px;
-      margin: 8px 0;
-      border-radius: 8px;
-      font-size: 0.75rem;
-      text-align: center;
-      max-width: 400px;
-      line-height: 1.4;
-    }
-
-    .lavender {
-      color: #b497bd;
-      font-weight: bold;
-    }
-
-    .language-toggle {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      background-color: #fff;
-      color: #6a4c93;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
     #more-places {
       display: none;
-    }
-
-    @media (max-width: 600px) {
-      .section-title {
-        font-size: 1.2rem;
-      }
-      .section-content {
-        font-size: 0.9rem;
-      }
-      .reminder-box {
-        font-size: 0.7rem;
-      }
     }
   </style>
 </head>
 <body>
 
-  <button class="language-toggle" onclick="toggleLanguage()" id="lang-btn">English</button>
+<button class="language-toggle" onclick="toggleLanguage()" id="lang-btn">English</button>
 
-  <div class="reminder-box" id="rating-text">
-    نقدّر تقييمك للوحدة في <span class="lavender">جاذر إن</span><br>
-    We’d love your rating on <span class="lavender">Gatheren</span>
+<div class="section">
+  <div class="section-title" id="welcome-title">زان المكان بحضورك<br>هذه الصفحة هي دليلك الإرشادي والمساعد وقت الحاجة.</div>
+</div>
+
+<div class="section">
+  <div class="section-title" id="wifi-title">شبكة الـ Wi-Fi</div>
+  <div class="section-content" id="wifi-details">
+    اسم الشبكة: <strong>Guest_Wifi</strong><br>
+    رمز الدخول: <strong>welcome123</strong>
   </div>
+</div>
 
-  <div class="section">
-    <div class="section-title" id="welcome-title">
-      زان المكان بحضورك<br>
-      هذه الصفحة هي دليلك الإرشادي والمساعد وقت الحاجة.
+<div class="section">
+  <div class="section-title" id="places-title">الأماكن القريبة</div>
+  <div class="section-content" id="places-box">
+    <span class="place-category">مطاعم:</span>
+    مطعم شاورما تايم<br>
+    مطعم بيتزا هوم<br>
+    مطعم فلافل المدينة<br>
+    <div id="more-places">
+      <span class="place-category">صيدليات:</span>
+      صيدلية النهدي<br>
+      صيدلية الدواء<br>
+      <span class="place-category">مستشفيات:</span>
+      مستشفى الهدى<br>
+      مستوصف الشفاء<br>
     </div>
+    <button class="toggle-btn" onclick="togglePlaces()" id="places-toggle">عرض المزيد</button>
   </div>
+</div>
 
-  <div class="section">
-    <div class="section-title" id="wifi-title">شبكة الـ Wi-Fi</div>
-    <div class="section-content" id="wifi-details">
-      اسم الشبكة: <strong>Guest_Wifi</strong><br>
-      رمز الدخول: <strong>welcome123</strong>
-    </div>
-  </div>
+<script>
+  let currentLang = "ar";
 
-  <div class="section">
-    <div class="section-header">
-      <div class="section-title" id="places-title">الأماكن القريبة</div>
-      <button class="toggle-btn" onclick="togglePlaces()" id="places-toggle">عرض المزيد</button>
-    </div>
-    <div class="section-content" id="places-box">
-      <span class="place-category">مطاعم:</span>
-      مطعم شاورما تايم<br>
-      مطعم بيتزا هوم<br>
-      مطعم فلافل المدينة<br>
+  function togglePlaces() {
+    const more = document.getElementById("more-places");
+    const btn = document.getElementById("places-toggle");
+    if (more.style.display === "none" || more.style.display === "") {
+      more.style.display = "block";
+      btn.textContent = currentLang === "ar" ? "عرض أقل" : "Show Less";
+    } else {
+      more.style.display = "none";
+      btn.textContent = currentLang === "ar" ? "عرض المزيد" : "Show More";
+    }
+  }
 
-      <div id="more-places">
-        <span class="place-category">صيدليات:</span>
-        صيدلية النهدي<br>
-        صيدلية الدواء<br>
-        <span class="place-category">مستشفيات:</span>
-        مستشفى الهدى<br>
-        مستوصف الشفاء<br>
-        <span class="place-category">بقالات:</span>
-        بقالة الراية<br>
-        <span class="place-category">محطات بنزين:</span>
-        محطة وقود ساسكو<br>
-        <span class="place-category">مغاسل سيارات:</span>
-        مغسلة النخبة<br>
-        <span class="place-category">مغاسل ملابس:</span>
-        مغسلة الورد<br>
-        <span class="place-category">حلاق:</span>
-        صالون الوسيم<br>
-        <span class="place-category">مكتبة:</span>
-        مكتبة البيان<br>
-        <span class="place-category">معالم سياحية:</span>
-        منتزه جبل السمراء<br>
-        متحف حائل التراثي<br>
-      </div>
-    </div>
-  </div>
+  function toggleLanguage() {
+    currentLang = currentLang === "ar" ? "en" : "ar";
+    document.documentElement.lang = currentLang;
+    document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
 
-  <div class="section">
-    <div class="section-title" id="contact-title">وسيلة تواصل سريعة</div>
-    <div class="section-content" id="contact-details">
-      للتواصل الفوري عبر واتساب:
-      <a href="https://wa.me/966501234567" target="_blank" style="color:#6a4c93; font-weight:bold;">اضغط هنا</a>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title" id="notes-title">ملاحظات وإرشادات مهمة</div>
-    <div class="section-content" id="notes-details">
-      <span class="place-category">يرجى مراعاة التالي:</span>
-      - يمنع التدخين داخل الوحدة<br>
-      - يمنع اصطحاب الحيوانات الأليفة<br>
-      - يرجى عدم تحريك الأثاث أو الأجهزة<br>
-      - في حال وجود أي ملاحظة، نرجو التواصل فورًا<br>
-      - وقت الخروج الرسمي: الساعة 12 ظهرًا
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title" id="farewell-title">
-      نتمنى لك إقامة سعيدة، ونسعد بخدمتك دائمًا
-    </div>
-  </div>
-
-  <script>
-    let currentLang = "ar";
-
-    const translations = {
+    const content = {
       ar: {
         langBtn: "English",
         welcome: "زان المكان بحضورك<br>هذه الصفحة هي دليلك الإرشادي والمساعد وقت الحاجة.",
         wifiTitle: "شبكة الـ Wi-Fi",
         wifiDetails: "اسم الشبكة: <strong>Guest_Wifi</strong><br>رمز الدخول: <strong>welcome123</strong>",
         placesTitle: "الأماكن القريبة",
-        contactTitle: "وسيلة تواصل سريعة",
-        contactDetails: "للتواصل الفوري عبر واتساب: <a href='https://wa.me/966501234567' target='_blank' style='color:#6a4c93; font-weight:bold;'>اضغط هنا</a>",
-        notesTitle: "ملاحظات وإرشادات مهمة",
-        notesDetails: "<span class='place-category'>يرجى مراعاة التالي:</span>- يمنع التدخين داخل الوحدة<br>- يمنع اصطحاب الحيوانات الأليفة<br>- يرجى عدم تحريك الأثاث أو الأجهزة<br>- في حال وجود أي ملاحظة، نرجو التواصل فورًا<br>- وقت الخروج الرسمي: الساعة 12 ظهرًا",
-        farewell: "نتمنى لك إقامة سعيدة، ونسعد بخدمتك دائمًا",
         toggleMore: "عرض المزيد",
-        toggleLess: "عرض أقل",
-        rating: "نقدّر تقييمك للوحدة في <span class='lavender'>جاذر إن</span><br>We’d love your rating on <span class='lavender'>
+        toggleLess: "عرض أقل"
+      },
+      en: {
+        langBtn: "العربية",
+        welcome: "Welcome!<br>This page is your guide and helper during your stay.",
+        wifiTitle: "Wi-Fi Network",
+        wifiDetails: "Network Name: <strong>Guest_Wifi</strong><br>Password: <strong>welcome123</strong>",
+        placesTitle: "Nearby Places",
+        toggleMore: "Show More",
+        toggleLess: "Show Less"
+      }
+    };
+
+    document.getElementById("lang-btn").textContent = content[currentLang].langBtn;
+    document.getElementById("welcome-title").innerHTML = content[currentLang].welcome;
+    document.getElementById("wifi-title").textContent = content[currentLang].wifiTitle;
+    document.getElementById("wifi-details").innerHTML = content[currentLang].wifiDetails;
+    document.getElementById("places-title").textContent = content[currentLang].placesTitle;
+
+    const more = document.getElementById("more-places");
+    const btn = document.getElementById("places-toggle");
+    btn.textContent = more.style.display === "block" ? content[currentLang].toggleLess : content[currentLang].toggleMore;
+  }
+</script>
+
+</body>
+</html>
