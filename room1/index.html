@@ -1,144 +1,67 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>الوحدة 001</title>
-  <style>
-    body {
-      font-family: 'Cairo', sans-serif;
-      background: linear-gradient(135deg, #e0f7fa, #fce4ec, #ede7f6, #fffde7);
-      padding: 60px 20px;
-      margin: 0;
-      direction: rtl;
-    }
-    .section {
-      max-width: 600px;
-      margin: 20px auto;
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
-    .section-title {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #6a4c93;
-      margin-bottom: 10px;
-    }
-    .section-content {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #333;
-    }
-    .toggle-btn, .language-toggle {
-      background-color: #6a4c93;
-      color: #fff;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      margin-top: 10px;
-    }
-    .place-category {
-      color: #a0c4d8;
-      font-weight: bold;
-      margin-top: 20px;
-      display: block;
-    }
-    #more-places {
-      display: none;
-    }
-  </style>
-</head>
-<body>
+<!DOCTYPE html> <html lang="ar" dir="rtl"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>صفحة HTML جاهزة</title> <style> body { font-family: Arial, sans-serif; background-color: #f9f9f9; margin: 0; padding: 20px; direction: rtl; text-align: right; } .card { background-color: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); max-width: 600px; margin: 20px auto; padding: 20px; transition: box-shadow 0.3s ease; cursor: pointer; } .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.2); } h1 { color: #333; margin-bottom: 10px; } p { color: #666; line-height: 1.6; } button { background-color: #007bff; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; margin-top: 15px; font-size: 16px; } button:hover { background-color: #0056b3; } .more-content { display: none; margin-top: 15px; color: #444; } .nearby-places { margin-top: 20px; } .nearby-places h2 { color: #007bff; margin-bottom: 10px; } .nearby-places ul { list-style: none; padding: 0; } .nearby-places li { background-color: #e9f0ff; margin-bottom: 8px; padding: 10px; border-radius: 5px; } .language-toggle { position: fixed; top: 20px; left: 20px; background-color: #28a745; border: none; color: white; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 14px; } .language-toggle:hover { background-color: #1e7e34; } </style> </head> <body> <button class="language-toggle" onclick="toggleLanguage()">English</button>
 
-<button class="language-toggle" onclick="toggleLanguage()" id="lang-btn">English</button>
-
-<div class="section">
-  <div class="section-title" id="welcome-title">زان المكان بحضورك<br>هذه الصفحة هي دليلك الإرشادي والمساعد وقت الحاجة.</div>
-</div>
-
-<div class="section">
-  <div class="section-title" id="wifi-title">شبكة الـ Wi-Fi</div>
-  <div class="section-content" id="wifi-details">
-    اسم الشبكة: <strong>Guest_Wifi</strong><br>
-    رمز الدخول: <strong>welcome123</strong>
-  </div>
-</div>
-
-<div class="section">
-  <div class="section-title" id="places-title">الأماكن القريبة</div>
-  <div class="section-content" id="places-box">
-    <span class="place-category">مطاعم:</span>
-    مطعم شاورما تايم<br>
-    مطعم بيتزا هوم<br>
-    مطعم فلافل المدينة<br>
-    <div id="more-places">
-      <span class="place-category">صيدليات:</span>
-      صيدلية النهدي<br>
-      صيدلية الدواء<br>
-      <span class="place-category">مستشفيات:</span>
-      مستشفى الهدى<br>
-      مستوصف الشفاء<br>
+<div class="card" onclick="window.open('file.html', '_blank')">
+    <h1>بطاقة المحتوى</h1>
+    <p>اضغط هنا لفتح أو تحميل الملف بصيغة HTML.</p>
+    <button onclick="toggleMore(event)">عرض المزيد</button>
+    <div class="more-content">
+        <p>هذا الملف يحتوي على تصميم متكامل مع زر لتغيير اللغة وزر لعرض المزيد، بالإضافة إلى قسم للأماكن القريبة مع تفاصيل مفيدة.</p>
     </div>
-    <button class="toggle-btn" onclick="togglePlaces()" id="places-toggle">عرض المزيد</button>
-  </div>
+</div>
+
+<div class="nearby-places">
+    <h2>الأماكن القريبة</h2>
+    <ul>
+        <li>المطعم المحلي - 500 متر</li>
+        <li>المكتبة العامة - 1 كم</li>
+        <li>المتنزه المركزي - 1.5 كم</li>
+        <li>محطة المترو - 300 متر</li>
+    </ul>
 </div>
 
 <script>
-  let currentLang = "ar";
-
-  function togglePlaces() {
-    const more = document.getElementById("more-places");
-    const btn = document.getElementById("places-toggle");
-    if (more.style.display === "none" || more.style.display === "") {
-      more.style.display = "block";
-      btn.textContent = currentLang === "ar" ? "عرض أقل" : "Show Less";
-    } else {
-      more.style.display = "none";
-      btn.textContent = currentLang === "ar" ? "عرض المزيد" : "Show More";
+    function toggleMore(event) {
+        event.stopPropagation();
+        const moreContent = event.target.nextElementSibling;
+        if (moreContent.style.display === "block") {
+            moreContent.style.display = "none";
+            event.target.textContent = "عرض المزيد";
+        } else {
+            moreContent.style.display = "block";
+            event.target.textContent = "عرض أقل";
+        }
     }
-  }
 
-  function toggleLanguage() {
-    currentLang = currentLang === "ar" ? "en" : "ar";
-    document.documentElement.lang = currentLang;
-    document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
-
-    const content = {
-      ar: {
-        langBtn: "English",
-        welcome: "زان المكان بحضورك<br>هذه الصفحة هي دليلك الإرشادي والمساعد وقت الحاجة.",
-        wifiTitle: "شبكة الـ Wi-Fi",
-        wifiDetails: "اسم الشبكة: <strong>Guest_Wifi</strong><br>رمز الدخول: <strong>welcome123</strong>",
-        placesTitle: "الأماكن القريبة",
-        toggleMore: "عرض المزيد",
-        toggleLess: "عرض أقل"
-      },
-      en: {
-        langBtn: "العربية",
-        welcome: "Welcome!<br>This page is your guide and helper during your stay.",
-        wifiTitle: "Wi-Fi Network",
-        wifiDetails: "Network Name: <strong>Guest_Wifi</strong><br>Password: <strong>welcome123</strong>",
-        placesTitle: "Nearby Places",
-        toggleMore: "Show More",
-        toggleLess: "Show Less"
-      }
-    };
-
-    document.getElementById("lang-btn").textContent = content[currentLang].langBtn;
-    document.getElementById("welcome-title").innerHTML = content[currentLang].welcome;
-    document.getElementById("wifi-title").textContent = content[currentLang].wifiTitle;
-    document.getElementById("wifi-details").innerHTML = content[currentLang].wifiDetails;
-    document.getElementById("places-title").textContent = content[currentLang].placesTitle;
-
-    const more = document.getElementById("more-places");
-    const btn = document.getElementById("places-toggle");
-    btn.textContent = more.style.display === "block" ? content[currentLang].toggleLess : content[currentLang].toggleMore;
-  }
+    function toggleLanguage() {
+        const btn = document.querySelector('.language-toggle');
+        if (btn.textContent === 'English') {
+            btn.textContent = 'العربية';
+            document.body.dir = 'ltr';
+            document.body.style.textAlign = 'left';
+            document.querySelector('h1').textContent = 'Content Card';
+            document.querySelector('.card p').textContent = 'Click here to open or download the HTML file.';
+            document.querySelector('.more-content p').textContent = 'This file contains a complete design with a language toggle button, a show more button, and a nearby places section with useful details.';
+            document.querySelector('.nearby-places h2').textContent = 'Nearby Places';
+            const places = document.querySelectorAll('.nearby-places li');
+            places[0].textContent = 'Local Restaurant - 500m';
+            places[1].textContent = 'Public Library - 1km';
+            places[2].textContent = 'Central Park - 1.5km';
+            places[3].textContent = 'Metro Station - 300m';
+        } else {
+            btn.textContent = 'English';
+            document.body.dir = 'rtl';
+            document.body.style.textAlign = 'right';
+            document.querySelector('h1').textContent = 'بطاقة المحتوى';
+            document.querySelector('.card p').textContent = 'اضغط هنا لفتح أو تحميل الملف بصيغة HTML.';
+            document.querySelector('.more-content p').textContent = 'هذا الملف يحتوي على تصميم متكامل مع زر لتغيير اللغة وزر لعرض المزيد، بالإضافة إلى قسم للأماكن القريبة مع تفاصيل مفيدة.';
+            document.querySelector('.nearby-places h2').textContent = 'الأماكن القريبة';
+            const places = document.querySelectorAll('.nearby-places li');
+            places[0].textContent = 'المطعم المحلي - 500 متر';
+            places[1].textContent = 'المكتبة العامة - 1 كم';
+            places[2].textContent = 'المتنزه المركزي - 1.5 كم';
+            places[3].textContent = 'محطة المترو - 300 متر';
+        }
+    }
 </script>
 
-</body>
-</html>
+</body> </html>
