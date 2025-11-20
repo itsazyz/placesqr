@@ -7,96 +7,83 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 <style>
   body {
-    margin: 0; padding: 60px 20px 100px;
-    font-family: 'Cairo', sans-serif;
-    background: linear-gradient(135deg, #e0f7fa, #fce4ec, #ede7f6, #fffde7);
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
+    margin:0; padding:60px 20px 100px;
+    font-family:'Cairo', sans-serif;
+    background: linear-gradient(135deg,#e0f7fa,#fce4ec,#ede7f6,#fffde7);
+    color:#333;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    position:relative;
   }
-
   #language-toggle {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background-color: #6a4c93;
-    color: #fff;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
+    position:absolute;
+    top:20px;
+    left:20px;
+    background-color:#6a4c93;
+    color:#fff;
+    border:none;
+    padding:6px 12px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
   }
-
   .reminder-box {
-    background-color: #f5f5f5;
+    background-color: rgba(255,255,255,0.5);
     color: #444;
-    padding: 6px 10px;
-    margin: 8px 0;
-    border-radius: 8px;
-    font-size: 0.75rem;
-    text-align: center;
-    max-width: 400px;
-    line-height: 1.4;
+    padding:6px 10px;
+    margin:8px 0;
+    border-radius:8px;
+    font-size:0.75rem;
+    text-align:center;
+    max-width:400px;
+    line-height:1.4;
   }
-
-  .lavender { color: #b497bd; font-weight: bold; }
-
+  .lavender { color:#b497bd; font-weight:bold; }
   .section {
-    padding: 20px;
-    margin: 15px 0;
-    width: 100%;
-    max-width: 600px;
-    border-radius: 12px;
-    text-align: center;
-    background: #fff;
-    box-shadow: 0 0 12px rgba(0,0,0,0.05);
+    padding:20px;
+    margin:15px 0;
+    width:100%;
+    max-width:600px;
+    border-radius:12px;
+    text-align:center;
+    background-color: rgba(255,255,255,0.3);
   }
-
   .section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:8px;
   }
-
   .section-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #6a4c93;
+    font-size:1.5rem;
+    font-weight:bold;
+    color:#6a4c93;
   }
-
   .toggle-btn {
-    background-color: #6a4c93;
-    color: #fff;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.85rem;
+    background-color:#6a4c93;
+    color:#fff;
+    border:none;
+    padding:6px 12px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:0.85rem;
   }
-
   .section-content {
-    font-size: 1rem;
-    line-height: 1.7;
-    text-align: right;
+    font-size:1rem;
+    line-height:1.7;
+    text-align:right;
   }
-
   .place-category {
-    color: #a0c4d8;
-    font-weight: bold;
-    margin-top: 15px;
-    margin-bottom: 6px;
-    display: block;
+    color:#a0c4d8;
+    font-weight:bold;
+    margin-top:15px;
+    margin-bottom:6px;
+    display:block;
   }
-
-  #more-places { display: none; }
-
-  a { color: #6a4c93; text-decoration: underline; }
-
-  @media (max-width:600px){
+  #more-places { display:none; }
+  a { color:#6a4c93; text-decoration:underline; }
+  @media(max-width:600px){
     .section-title{font-size:1.2rem;}
     .section-content{font-size:0.9rem;}
     .reminder-box{font-size:0.7rem;}
@@ -108,8 +95,7 @@
 <button id="language-toggle">English</button>
 
 <div class="reminder-box" id="rating-top">
-  نقدّر تقييمك للوحدة في <span class="lavender">جاذر إن</span><br>
-  We’d love your rating on <span class="lavender">Gatheren</span>
+  <span id="rating-text">نقدّر تقييمك للوحدة في <span class="lavender">جاذر إن</span><br>We’d love your rating on <span class="lavender">Gatheren</span></span>
 </div>
 
 <div class="section">
@@ -133,56 +119,52 @@
     <button class="toggle-btn" onclick="togglePlaces()" id="places-toggle">عرض المزيد</button>
   </div>
   <div class="section-content" id="places-box">
-
-    <span class="place-category">مطاعم:</span>
-    <strong>مطعم شاورما تايم</strong><br>
-    📍 يبعد 1.2 كم<br>
-    🕒 12:00 ظهرًا – 1:00 صباحًا<br>
-    ☎️ 0551234567<br>
-    🌐 <a href="#">عرض على الخريطة</a><br><br>
-
-    <strong>مطعم بيتزا هوم</strong><br>
-    📍 يبعد 1.8 كم<br>
-    🕒 1:00 ظهرًا – 12:00 صباحًا<br>
-    ☎️ 0557654321<br>
-    🌐 <a href="#">عرض على الخريطة</a><br><br>
-
-    <div id="more-places">
-      <span class="place-category">صيدليات:</span>
-      <strong>صيدلية الياسمين</strong><br>
-      📍 يبعد 0.8 كم<br>
-      🕒 8:00 صباحًا – 11:00 مساءً<br>
-      ☎️ 0551122334<br><br>
-
-      <span class="place-category">محطات وقود:</span>
-      <strong>محطة الوقود المركزية</strong><br>
-      📍 يبعد 2.0 كم<br>
-      🕒 24 ساعة<br>
-      ☎️ 0559988776<br><br>
-
-      <span class="place-category">غسيل ملابس:</span>
-      <strong>مغسلة سريعة</strong><br>
-      📍 يبعد 1.5 كم<br>
-      🕒 8:00 صباحًا – 8:00 مساءً<br>
-      ☎️ 0552233445<br><br>
-
-      <span class="place-category">غسيل سيارات:</span>
-      <strong>غسيل سيارات الشمال</strong><br>
-      📍 يبعد 2.3 كم<br>
-      🕒 9:00 صباحًا – 9:00 مساءً<br>
-      ☎️ 0555566778<br><br>
-
-      <span class="place-category">أماكن سياحية:</span>
-      <strong>الحديقة المركزية</strong><br>
-      📍 يبعد 3.0 كم<br>
-      🕒 6:00 صباحًا – 10:00 مساءً<br><br>
-
-      <span class="place-category">أسواق قريبة:</span>
-      <strong>سوق النخيل</strong><br>
-      📍 يبعد 2.5 كم<br>
-      🕒 10:00 صباحًا – 11:00 مساءً<br><br>
+    <div id="main-places">
+      <span class="place-category" id="cat-restaurants">مطاعم:</span>
+      <div id="places-restaurants">
+        <strong>مطعم شاورما تايم</strong><br>📍 يبعد 1.2 كم<br>🕒 12:00 ظهرًا – 1:00 صباحًا<br>☎️ 0551234567<br>🌐 <a href="#">عرض على الخريطة</a><br><br>
+        <strong>مطعم بيتزا هوم</strong><br>📍 يبعد 1.8 كم<br>🕒 1:00 ظهرًا – 12:00 صباحًا<br>☎️ 0557654321<br>🌐 <a href="#">عرض على الخريطة</a><br><br>
+        <strong>مطعم كباب الملك</strong><br>📍 يبعد 2.0 كم<br>🕒 12:00 ظهرًا – 12:00 منتصف الليل<br>☎️ 0553344556<br>🌐 <a href="#">عرض على الخريطة</a><br><br>
+      </div>
     </div>
 
+    <div id="more-places">
+      <span class="place-category" id="cat-pharmacy">صيدليات:</span>
+      <div id="places-pharmacy">
+        <strong>صيدلية الياسمين</strong><br>📍 يبعد 0.8 كم<br>🕒 8:00 صباحًا – 11:00 مساءً<br>☎️ 0551122334<br><br>
+        <strong>صيدلية الخليج</strong><br>📍 يبعد 1.5 كم<br>🕒 9:00 صباحًا – 10:00 مساءً<br>☎️ 0552233445<br><br>
+      </div>
+
+      <span class="place-category" id="cat-fuel">محطات وقود:</span>
+      <div id="places-fuel">
+        <strong>محطة الوقود المركزية</strong><br>📍 يبعد 2.0 كم<br>🕒 24 ساعة<br>☎️ 0559988776<br><br>
+        <strong>محطة الشمال</strong><br>📍 يبعد 3.0 كم<br>🕒 24 ساعة<br>☎️ 0558877665<br><br>
+      </div>
+
+      <span class="place-category" id="cat-laundry">غسيل ملابس:</span>
+      <div id="places-laundry">
+        <strong>مغسلة سريعة</strong><br>📍 يبعد 1.5 كم<br>🕒 8:00 صباحًا – 8:00 مساءً<br>☎️ 0552233445<br><br>
+        <strong>مغسلة المدينة</strong><br>📍 يبعد 2.5 كم<br>🕒 9:00 صباحًا – 9:00 مساءً<br>☎️ 0553344557<br><br>
+      </div>
+
+      <span class="place-category" id="cat-carwash">غسيل سيارات:</span>
+      <div id="places-carwash">
+        <strong>غسيل سيارات الشمال</strong><br>📍 يبعد 2.3 كم<br>🕒 9:00 صباحًا – 9:00 مساءً<br>☎️ 0555566778<br><br>
+        <strong>غسيل سيارات الواجهة</strong><br>📍 يبعد 3.1 كم<br>🕒 8:00 صباحًا – 8:00 مساءً<br>☎️ 0556677889<br><br>
+      </div>
+
+      <span class="place-category" id="cat-tourist">أماكن سياحية:</span>
+      <div id="places-tourist">
+        <strong>الحديقة المركزية</strong><br>📍 يبعد 3.0 كم<br>🕒 6:00 صباحًا – 10:00 مساءً<br><br>
+        <strong>المنتزه البحري</strong><br>📍 يبعد 4.0 كم<br>🕒 7:00 صباحًا – 11:00 مساءً<br><br>
+      </div>
+
+      <span class="place-category" id="cat-markets">أسواق قريبة:</span>
+      <div id="places-markets">
+        <strong>سوق النخيل</strong><br>📍 يبعد 2.5 كم<br>🕒 10:00 صباحًا – 11:00 مساءً<br><br>
+        <strong>سوق المدينة</strong><br>📍 يبعد 3.5 كم<br>🕒 9:00 صباحًا – 10:00 مساءً<br><br>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -212,71 +194,61 @@
 </div>
 
 <div class="reminder-box" id="rating-bottom">
-  نقدّر تقييمك للوحدة في <span class="lavender">جاذر إن</span><br>
-  We’d love your rating on <span class="lavender">Gatheren</span>
+  <span id="rating-text2">نقدّر تقييمك للوحدة في <span class="lavender">جاذر إن</span><br>We’d love your rating on <span class="lavender">Gatheren</span></span>
 </div>
 
 <script>
 let currentLang = "ar";
 
 const content = {
-  ar:{
-    btn:"English",
-    welcome:"زان المكان بحضورك<br>هذه الصفحة هي دليلك الإرشادي والمساعد وقت الحاجة.",
-    wifiTitle:"شبكة الـ Wi-Fi",
-    wifiDetails:"اسم الشبكة: <strong>Guest_Wifi</strong><br>رمز الدخول: <strong>welcome123</strong>",
-    placesTitle:"الأماكن القريبة",
-    contactTitle:"وسيلة تواصل سريعة",
-    contactDetails:"للتواصل الفوري عبر واتساب: <a href='https://wa.me/966501234567' target='_blank'>اضغط هنا</a>",
-    notesTitle:"ملاحظات وإرشادات مهمة",
-    notesDetails:"<span class='place-category'>يرجى مراعاة التالي:</span><br>- يمنع التدخين داخل الوحدة<br>- يمنع اصطحاب الحيوانات الأليفة<br>- يرجى عدم تحريك الأثاث أو الأجهزة<br>- في حال وجود أي ملاحظة، نرجو التواصل فورًا<br>- وقت الخروج الرسمي: الساعة 12 ظهرًا",
-    more:"عرض المزيد",
-    less:"عرض أقل"
-  },
-  en:{
-    btn:"العربية",
-    welcome:"Welcome!<br>This page is your guide and assistant whenever needed.",
-    wifiTitle:"Wi-Fi Network",
-    wifiDetails:"Network Name: <strong>Guest_Wifi</strong><br>Password: <strong>welcome123</strong>",
-    placesTitle:"Nearby Places",
-    contactTitle:"Quick Contact",
-    contactDetails:"For instant contact via WhatsApp: <a href='https://wa.me/966501234567' target='_blank'>Click Here</a>",
-    notesTitle:"Important Notes & Guidelines",
-    notesDetails:"<span class='place-category'>Please note the following:</span><br>- Smoking is prohibited inside the unit<br>- Pets are not allowed<br>- Do not move furniture or devices<br>- If any issue arises, please contact us immediately<br>- Official check-out time: 12 PM",
-    more:"Show More",
-    less:"Show Less"
-  }
-};
-
-function togglePlaces(){
-  const more = document.getElementById("more-places");
-  const btn = document.getElementById("places-toggle");
-  if(more.style.display==="block"){ more.style.display="none"; btn.textContent=content[currentLang].more; }
-  else{ more.style.display="block"; btn.textContent=content[currentLang].less; }
-}
-
-document.getElementById("language-toggle").onclick = function(){
-  currentLang = currentLang==="ar"?"en":"ar";
-  const data = content[currentLang];
-
-  document.documentElement.lang = currentLang;
-  document.documentElement.dir = currentLang==="ar"?"rtl":"ltr";
-
-  this.textContent = data.btn;
-  document.getElementById("welcome-title").innerHTML = data.welcome;
-  document.getElementById("wifi-title").textContent = data.wifiTitle;
-  document.getElementById("wifi-details").innerHTML = data.wifiDetails;
-  document.getElementById("places-title").textContent = data.placesTitle;
-  document.getElementById("contact-title").textContent = data.contactTitle;
-  document.getElementById("contact-details").innerHTML = data.contactDetails;
-  document.getElementById("notes-title").textContent = data.notesTitle;
-  document.getElementById("notes-details").innerHTML = data.notesDetails;
-
-  const moreBox = document.getElementById("more-places");
-  const toggleBtn = document.getElementById("places-toggle");
-  toggleBtn.textContent = moreBox.style.display==="block"?data.less:data.more;
-};
-</script>
-
-</body>
-</html>
+ar:{
+  btn:"English",
+  welcome:"زان المكان بحضورك<br>هذه الصفحة هي دليلك الإرشادي والمساعد وقت الحاجة.",
+  wifiTitle:"شبكة الـ Wi-Fi",
+  wifiDetails:"اسم الشبكة: <strong>Guest_Wifi</strong><br>رمز الدخول: <strong>welcome123</strong>",
+  placesTitle:"الأماكن القريبة",
+  cat_restaurants:"مطاعم:",
+  places_restaurants:`<strong>مطعم شاورما تايم</strong><br>📍 يبعد 1.2 كم<br>🕒 12:00 ظهرًا – 1:00 صباحًا<br>☎️ 0551234567<br>🌐 <a href="#">عرض على الخريطة</a><br><br>
+<strong>مطعم بيتزا هوم</strong><br>📍 يبعد 1.8 كم<br>🕒 1:00 ظهرًا – 12:00 صباحًا<br>☎️ 0557654321<br>🌐 <a href="#">عرض على الخريطة</a><br><br>
+<strong>مطعم كباب الملك</strong><br>📍 يبعد 2.0 كم<br>🕒 12:00 ظهرًا – 12:00 منتصف الليل<br>☎️ 0553344556<br>🌐 <a href="#">عرض على الخريطة</a><br><br>`,
+  cat_pharmacy:"صيدليات:",
+  places_pharmacy:`<strong>صيدلية الياسمين</strong><br>📍 يبعد 0.8 كم<br>🕒 8:00 صباحًا – 11:00 مساءً<br>☎️ 0551122334<br><br>
+<strong>صيدلية الخليج</strong><br>📍 يبعد 1.5 كم<br>🕒 9:00 صباحًا – 10:00 مساءً<br>☎️ 0552233445<br><br>`,
+  cat_fuel:"محطات وقود:",
+  places_fuel:`<strong>محطة الوقود المركزية</strong><br>📍 يبعد 2.0 كم<br>🕒 24 ساعة<br>☎️ 0559988776<br><br>
+<strong>محطة الشمال</strong><br>📍 يبعد 3.0 كم<br>🕒 24 ساعة<br>☎️ 0558877665<br><br>`,
+  cat_laundry:"غسيل ملابس:",
+  places_laundry:`<strong>مغسلة سريعة</strong><br>📍 يبعد 1.5 كم<br>🕒 8:00 صباحًا – 8:00 مساءً<br>☎️ 0552233445<br><br>
+<strong>مغسلة المدينة</strong><br>📍 يبعد 2.5 كم<br>🕒 9:00 صباحًا – 9:00 مساءً<br>☎️ 0553344557<br><br>`,
+  cat_carwash:"غسيل سيارات:",
+  places_carwash:`<strong>غسيل سيارات الشمال</strong><br>📍 يبعد 2.3 كم<br>🕒 9:00 صباحًا – 9:00 مساءً<br>☎️ 0555566778<br><br>
+<strong>غسيل سيارات الواجهة</strong><br>📍 يبعد 3.1 كم<br>🕒 8:00 صباحًا – 8:00 مساءً<br>☎️ 0556677889<br><br>`,
+  cat_tourist:"أماكن سياحية:",
+  places_tourist:`<strong>الحديقة المركزية</strong><br>📍 يبعد 3.0 كم<br>🕒 6:00 صباحًا – 10:00 مساءً<br><br>
+<strong>المنتزه البحري</strong><br>📍 يبعد 4.0 كم<br>🕒 7:00 صباحًا – 11:00 مساءً<br><br>`,
+  cat_markets:"أسواق قريبة:",
+  places_markets:`<strong>سوق النخيل</strong><br>📍 يبعد 2.5 كم<br>🕒 10:00 صباحًا – 11:00 مساءً<br><br>
+<strong>سوق المدينة</strong><br>📍 يبعد 3.5 كم<br>🕒 9:00 صباحًا – 10:00 مساءً<br><br>`,
+  contactTitle:"وسيلة تواصل سريعة",
+  contactDetails:"للتواصل الفوري عبر واتساب: <a href='https://wa.me/966501234567' target='_blank'>اضغط هنا</a>",
+  notesTitle:"ملاحظات وإرشادات مهمة",
+  notesDetails:"<span class='place-category'>يرجى مراعاة التالي:</span><br>- يمنع التدخين داخل الوحدة<br>- يمنع اصطحاب الحيوانات الأليفة<br>- يرجى عدم تحريك الأثاث أو الأجهزة<br>- في حال وجود أي ملاحظة، نرجو التواصل فورًا<br>- وقت الخروج الرسمي: الساعة 12 ظهرًا",
+  farewell:"نتمنى لك إقامة سعيدة، ونسعد بخدمتك دائمًا",
+  more:"عرض المزيد",
+  less:"عرض أقل"
+},
+en:{
+  btn:"العربية",
+  welcome:"Welcome!<br>This page is your guide and assistant whenever needed.",
+  wifiTitle:"Wi-Fi Network",
+  wifiDetails:"Network Name: <strong>Guest_Wifi</strong><br>Password: <strong>welcome123</strong>",
+  placesTitle:"Nearby Places",
+  cat_restaurants:"Restaurants:",
+  places_restaurants:`<strong>Shawarma Time</strong><br>📍 1.2 km<br>🕒 12:00 PM – 1:00 AM<br>☎️ 0551234567<br>🌐 <a href="#">View on map</a><br><br>
+<strong>Pizza Home</strong><br>📍 1.8 km<br>🕒 1:00 PM – 12:00 AM<br>☎️ 0557654321<br>🌐 <a href="#">View on map</a><br><br>
+<strong>Kebab King</strong><br>📍 2.0 km<br>🕒 12:00 PM – 12:00 Midnight<br>☎️ 0553344556<br>🌐 <a href="#">View on map</a><br><br>`,
+  cat_pharmacy:"Pharmacies:",
+  places_pharmacy:`<strong>Yasmeen Pharmacy</strong><br>📍 0.8 km<br>🕒 8:00 AM – 11:00 PM<br>☎️ 0551122334<br><br>
+<strong>Gulf Pharmacy</strong><br>📍 1.5 km<br>🕒 9:00 AM – 10:00 PM<br>☎️ 0552233445<br><br>`,
+  cat_fuel:"Fuel Stations:",
+  places_fuel:`<strong>Central Fuel Station</strong><br>📍 2.0 km<br>🕒 
