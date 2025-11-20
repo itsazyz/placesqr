@@ -64,11 +64,13 @@ a { color:#6a4c93; text-decoration:underline; }
 </head>
 <body>
 
-<button id="language-toggle">English</button>
-
-<div class="reminder-box" id="rating-top">
-  <span id="rating-text"></span>
+<!-- صندوق تقييم ثابت -->
+<div class="reminder-box">
+  نقدّر تقييمك للوحدة في <span class='lavender'>جاذر إن</span><br>
+  We’d love your rating on <span class='lavender'>Gatheren</span>
 </div>
+
+<button id="language-toggle">English</button>
 
 <div class="section">
   <div class="section-title" id="welcome-title"></div>
@@ -104,10 +106,6 @@ a { color:#6a4c93; text-decoration:underline; }
   <div class="section-title" id="farewell-title"></div>
 </div>
 
-<div class="reminder-box" id="rating-bottom">
-  <span id="rating-text2"></span>
-</div>
-
 <script>
 let currentLang = "ar";
 let isMoreVisible = false;
@@ -115,8 +113,6 @@ let isMoreVisible = false;
 const content = {
 ar:{
   langBtn:"English",
-  ratingTop:"نقدّر تقييمك للوحدة في <span class='lavender'>جاذر إن</span>",
-  ratingBottom:"نقدّر تقييمك للوحدة في <span class='lavender'>جاذر إن</span>",
   welcome:"زان المكان بحضورك<br>هذه الصفحة هي دليلك الإرشادي والمساعد وقت الحاجة.",
   wifiTitle:"شبكة الـ Wi-Fi",
   wifiDetails:"اسم الشبكة: <strong>Guest_Wifi</strong><br>رمز الدخول: <strong>welcome123</strong>",
@@ -125,7 +121,7 @@ ar:{
 <strong>مطعم شاورما تايم</strong><br>📍 يبعد 1.2 كم<br>🕒 12:00 ظهرًا – 1:00 صباحًا<br>☎️ 0551234567<br>🌐 <a href="#">عرض على الخريطة</a><br><br>
 <strong>مطعم بيتزا هوم</strong><br>📍 يبعد 1.8 كم<br>🕒 1:00 ظهرًا – 12:00 صباحًا<br>☎️ 0557654321<br>🌐 <a href="#">عرض على الخريطة</a><br><br>`,
   placesMore:`<span class="place-category">صيدليات:</span>
-<strong>صيدلية الياسمين</strong><br>📍 يبعد 0.8 كم<br>🕒 8:00 صباحًا – 11:00 مساءً<br>☎️ 0551122334<br><br>
+<strong>صيدلية الياسمين</strong><br>📍 0.8 كم<br>🕒 8:00 صباحًا – 11:00 مساءً<br>☎️ 0551122334<br><br>
 <span class="place-category">محطات وقود:</span>
 <strong>محطة الوقود المركزية</strong><br>📍 2.0 كم<br>🕒 24 ساعة<br>☎️ 0559988776<br><br>
 <span class="place-category">غسيل ملابس:</span>
@@ -136,8 +132,8 @@ ar:{
 <strong>الحديقة المركزية</strong><br>📍 3.0 كم<br>🕒 6:00 صباحًا – 10:00 مساءً<br><br>
 <span class="place-category">أسواق قريبة:</span>
 <strong>سوق النخيل</strong><br>📍 2.5 كم<br>🕒 10:00 صباحًا – 11:00 مساءً<br><br>`,
-  contactTitle:"وسيلة تواصل سريعة",
-  contactDetails:"للتواصل الفوري عبر واتساب: <a href='https://wa.me/966501234567' target='_blank'>اضغط هنا</a>",
+  contactTitle:"وسيلة تواصل سريعة واتساب – اتصال",
+  contactDetails:"للتواصل الفوري عبر واتساب: <a href='https://wa.me/966501234567' target='_blank'>اضغط هنا</a><br>رقم خدمة التنظيف: 920000000",
   notesTitle:"ملاحظات وإرشادات مهمة",
   notesDetails:"<span class='place-category'>يرجى مراعاة التالي:</span><br>- يمنع التدخين داخل الوحدة<br>- يمنع اصطحاب الحيوانات الأليفة<br>- يرجى عدم تحريك الأثاث أو الأجهزة<br>- في حال وجود أي ملاحظة، نرجو التواصل فورًا<br>- وقت الخروج الرسمي: الساعة 12 ظهرًا",
   farewell:"نتمنى لك إقامة سعيدة، ونسعد بخدمتك دائمًا",
@@ -146,8 +142,6 @@ ar:{
 },
 en:{
   langBtn:"العربية",
-  ratingTop:"We’d love your rating on <span class='lavender'>Gatheren</span>",
-  ratingBottom:"We’d love your rating on <span class='lavender'>Gatheren</span>",
   welcome:"Welcome!<br>This page is your guide and assistant whenever needed.",
   wifiTitle:"Wi-Fi Network",
   wifiDetails:"Network Name: <strong>Guest_Wifi</strong><br>Password: <strong>welcome123</strong>",
@@ -166,13 +160,18 @@ en:{
 <span class="place-category">Tourist Spots:</span>
 <strong>Central Park</strong><br>📍 3.0 km<br>🕒 6:00 AM – 10:00 PM<br><br>
 <span class="place-category">Nearby Markets:</span>
-<strong>Palm Market</strong><br>📍 2.5 km<br>🕒 10:00 AM – 11:00 PM<br><br>`
+<strong>Palm Market</strong><br>📍 2.5 km<br>🕒 10:00 AM – 11:00 PM<br><br>`,
+  contactTitle:"Quick Contact WhatsApp – Call",
+  contactDetails:"Instant via WhatsApp: <a href='https://wa.me/966501234567' target='_blank'>Click here</a><br>Cleaning Service Number: 920000000",
+  notesTitle:"Notes & Guidelines",
+  notesDetails:"<span class='place-category'>Please note:</span><br>- Smoking is prohibited<br>- No pets allowed<br>- Do not move furniture or devices<br>- For any notes, contact immediately<br>- Official check-out: 12 PM",
+  farewell:"We wish you a pleasant stay and we are always happy to serve you",
+  more:"Show More",
+  less:"Hide"
 }
 };
 
 function renderContent(){
-  document.getElementById("rating-text").innerHTML = content[currentLang].ratingTop;
-  document.getElementById("rating-text2").innerHTML = content[currentLang].ratingBottom;
   document.getElementById("welcome-title").innerHTML = content[currentLang].welcome;
   document.getElementById("wifi-title").textContent = content[currentLang].wifiTitle;
   document.getElementById("wifi-details").innerHTML = content[currentLang].wifiDetails;
@@ -191,19 +190,19 @@ document.getElementById("language-toggle").onclick = function(){
   currentLang = currentLang==="ar"?"en":"ar";
   document.documentElement.lang = currentLang;
   document.documentElement.dir = currentLang==="ar"?"rtl":"ltr";
+  this.textContent = content[currentLang].langBtn;
   renderContent();
 };
 
 function togglePlaces(){
   const more = document.getElementById("more-places");
   isMoreVisible = !isMoreVisible;
-  more.style.display = isMoreVisible ? "block" : "none";
-  document.getElementById("places-toggle").textContent = isMoreVisible ? content[currentLang].less : content[currentLang].more;
+  more.style.display = isMoreVisible?"block":"none";
+  document.getElementById("places-toggle").textContent = isMoreVisible?content[currentLang].less:content[currentLang].more;
 }
 
 // render initial content
 renderContent();
 </script>
-
 </body>
 </html>
